@@ -1,0 +1,90 @@
+.header {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(216, 216, 216);
+  z-index: 100;
+}
+
+.left-section {
+  align-items: center;
+  display: flex;
+}
+
+.hamburger-menu {
+  height: 24px;
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+.youtube-logo {
+  height: 20px;
+}
+
+.middle-section {
+  flex: 1;
+  margin-left: 70px;
+  margin-right: 35px;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+}
+
+.search-button {
+  height: 40px;
+  width: 60px;
+  position: relative;
+  
+}
+
+.search-button .tooltip {
+  position: absolute;
+  background-color: aquamarine;
+  bottom: -30px;
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opactiy 0.15s;
+  pointer-events: none;
+}
+
+.search-button:hover .tooltip {
+  opacity: 1;
+}
+
+.search-voice-button {
+  height: 40px;
+  width: 40px;
+}
+
+.right-section {
+  background-color: lightblue;
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.search-bar {
+  flex: 1;
+  height: 36px;
+  padding-left: 10px;
+  font-size: 16px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: grey;
+  border-radius: 2px;
+  box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.1);
+  width: 0;
+}
+
+.search-bar::spaceholder {
+  font-family: Roboto, Arial;
+  font-size: 16px;
+}
