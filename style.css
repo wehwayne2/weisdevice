@@ -132,13 +132,13 @@ canvas {
   color: var(--accent);
   line-height: 1.3;
   text-align: right;
-  font-size: clamp(2rem, 6vw, 10rem);
+  font-size: clamp(2rem, 6vw, 7rem);
   padding: 0;
   margin: 0;
 }
 
 .intro-text .big {
-  font-size: clamp(2rem, 8vw, 15rem);
+  font-size: clamp(2rem, 8vw, 10rem);
   font-weight: bold;
   color: var(--accent);
   display: inline-block;
