@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+/* ======================
+   VARIABLES
+====================== */
+:root {
+  --paytone-one: "Paytone One", Arial, sans-serif;
+  --lato: "Lato", Arial, sans-serif;
+  --highlight: #7a6f58;
+  --accent: #a1c576;
+  --darkyellow: #edca83;
+  --darkgreen: #759d60;
+}
+
+/* ======================
+   BASE RESET
+====================== */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--lato);
+}
+
+canvas {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+}
+
+/* ======================
+   CONTENT BOXES
+====================== */
+.content-work,
+.content-about {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  width: 90%;
+  max-width: 500px;
+  font-size: 20px;
+  padding: 20px;
+  background: rgba(50, 50, 50, 0.8);
+  color: white;
+}
+
+
+/* ======================
+   Copyright
+====================== */
+
+.copyright {
+  position: absolute;
+  bottom: 5px;
+  right: 10px; /* Changed from left: 50% */
+  transform: none; /* Removed translateX */
+  z-index: 1;
+  font-size: clamp(0.6rem, 1.5vw, 3rem);
+  color: var(--accent);
+  font-family: var(--lato);
+  pointer-events: none;
+  opacity: 0.8;
+}
+/* ======================
+   SAY HI BOX
+====================== */
+#websayhiBox {
+  position: absolute;
+  top: 2%; /* Moved down to make space for intro text */
+  right: 3%;
+  transform: none;
+  z-index: 1;
+  width: 90%;
+  height: auto;
+  font-family: var(--paytone-one);
+  padding: 20px;
+  margin: 0 auto;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+/* ======================
+   ANIMATIONS
+====================== */
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* ======================
+   INTRO TEXT
+====================== */
+.intro-text {
+  position: absolute;
+  top: 2vw; /* scaled for various screens */
+  right: 2vw;
+  width: auto;
+  max-width: 90%;
+  color: var(--accent);
+  line-height: 1.3;
+  text-align: right;
+  font-size: clamp(2rem, 6vw, 10rem);
+  padding: 0;
+  margin: 0;
+}
+
+.intro-text .big {
+  font-size: clamp(2rem, 8vw, 15rem);
+  font-weight: bold;
+  color: var(--accent);
+  display: inline-block;
+}
