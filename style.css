@@ -125,7 +125,7 @@ canvas {
 ====================== */
 .intro-text {
   position: absolute;
-  top: 2vw; /* scaled for various screens */
+  top: 2vw;
   right: 2vw;
   width: auto;
   max-width: 90%;
@@ -133,13 +133,13 @@ canvas {
   opacity: 0.9;
   line-height: 1.3;
   text-align: right;
-  font-size: clamp(2rem, 8vw, 6rem);
+  font-size: clamp(1.2rem, 5vw, 3rem); /* smaller */
   padding: 0;
   margin: 0;
 }
 
 .intro-text .big {
-  font-size: clamp(2.5rem, 10vw, 7rem);
+  font-size: clamp(1.5rem, 6vw, 4rem); /* also smaller */
   font-weight: bold;
   color: var(--darkgreen);
   display: inline-block;
