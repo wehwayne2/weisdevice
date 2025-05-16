@@ -10,7 +10,7 @@
   --highlight: #7a6f58;
   --accent: #a1c576;
   --darkyellow: #edca83;
-  --darkgreen: #759d60;
+  --darkgreen: #85a45e;
 }
 
 /* ======================
@@ -130,16 +130,17 @@ canvas {
   width: auto;
   max-width: 90%;
   color: var(--accent);
+  opacity: 0.9;
   line-height: 1.3;
   text-align: right;
-  font-size: clamp(2rem, 6vw, 7rem);
+  font-size: clamp(2rem, 8vw, 6rem);
   padding: 0;
   margin: 0;
 }
 
 .intro-text .big {
-  font-size: clamp(2rem, 8vw, 10rem);
+  font-size: clamp(2.5rem, 10vw, 7rem);
   font-weight: bold;
-  color: var(--accent);
+  color: var(--darkgreen);
   display: inline-block;
 }
