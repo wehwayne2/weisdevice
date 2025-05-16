@@ -25,7 +25,7 @@ function myFunctionMail() {
 }
 
 let isVisible = true;
-const box = document.getElementById("websayhiBox");
+const box = document.getElementById("firstpage");
 
 function myFunctionStart() {
   if (isVisible) {
@@ -88,3 +88,5 @@ window.addEventListener('resize', function () {
   canvas.height = window.innerHeight;
 });
 window.dispatchEvent(new Event('resize'));
+
+

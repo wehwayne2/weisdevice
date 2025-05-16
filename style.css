@@ -66,21 +66,25 @@ canvas {
 .copyright {
   position: absolute;
   bottom: 5px;
-  right: 10px; /* Changed from left: 50% */
-  transform: none; /* Removed translateX */
+  right: 10px;
+  /* Changed from left: 50% */
+  transform: none;
+  /* Removed translateX */
   z-index: 1;
-  font-size: clamp(0.6rem, 1.5vw, 3rem);
+  font-size: clamp(0.7rem, 1vw, 1rem);
   color: var(--accent);
   font-family: var(--lato);
   pointer-events: none;
   opacity: 0.8;
 }
+
 /* ======================
    SAY HI BOX
 ====================== */
 #websayhiBox {
   position: absolute;
-  top: 2%; /* Moved down to make space for intro text */
+  top: 2%;
+  /* Moved down to make space for intro text */
   right: 3%;
   transform: none;
   z-index: 1;
@@ -111,13 +115,23 @@ canvas {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeOut {
-  from { opacity: 1; }
-  to   { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
 
 /* ======================
@@ -133,14 +147,29 @@ canvas {
   opacity: 0.9;
   line-height: 1.3;
   text-align: right;
-  font-size: clamp(1.2rem, 5vw, 3rem); /* smaller */
+  font-size: clamp(1.2rem, 5vw, 3rem);
   padding: 0;
   margin: 0;
 }
 
 .intro-text .big {
-  font-size: clamp(1.5rem, 6vw, 4rem); /* also smaller */
+  font-size: clamp(1.5rem, 6vw, 4rem);
   font-weight: bold;
   color: var(--darkgreen);
   display: inline-block;
+}
+
+/* ======================
+   scroll embed
+====================== */
+.scroll-hint {
+  position: absolute;
+  bottom: 0.5vh; /* Responsive vertical space */
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(50px, 8vw, 100px);
+  height: auto;
+  opacity: 0.6;
+  z-index: 10;
+  pointer-events: none;
 }
