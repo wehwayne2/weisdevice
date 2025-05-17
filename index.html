@@ -5,7 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="/wei-logo.jpg">
-  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="css/window1.css">
+  <link rel="stylesheet" href="css/window2.css">
+  
   <title>Weisdevice</title>
   <meta name="description" content="Wei's portfolio - interaction design and creative coding projects.">
 </head>
@@ -35,13 +39,26 @@
 
   <div class="copyright">© 2025 Xianyao Wei</div>
 
-  <div class="content-work" id="contentBox-work" style="display: none;">
-    <h1>workkkkkk</h1>
-  </div>
+  <!-- window1-template.html -->
+  <template id="window1-template">
+    <div id="imageList">
+      <img src="https://via.placeholder.com/100x75?text=Image1" data-video="dQw4w9WgXcQ" alt="Image 1" />
+      <img src="https://via.placeholder.com/100x75?text=Image2" data-video="3JZ_D3ELwOQ" alt="Image 2" />
+      <img src="https://via.placeholder.com/100x75?text=Image3" data-video="V-_O7nl0Ii0" alt="Image 3" />
+      <img src="https://via.placeholder.com/100x75?text=Image4" data-video="eY52Zsg-KVI" alt="Image 4" />
+      <img src="https://via.placeholder.com/100x75?text=Image5" data-video="9bZkp7q19f0" alt="Image 5" />
+    </div>
+    <div id="videoView">
+      <iframe id="ytVideo" width="100%" height="250" src="" frameborder="0" allowfullscreen></iframe>
+      <p id="videoText"></p>
+      <button id="backBtn">Back to Images</button>
+    </div>
+  </template>
 
-  <div class="content-about" id="contentBox-about" style="display: none;">
-    <h1>aboutttt</h1>
-  </div>
+  <!-- window2-template.html -->
+  <template id="window2-template">
+    <p style="padding: 1000px;">mmmmmmmmm</p>
+  </template>
 
 
 

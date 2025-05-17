@@ -1,0 +1,137 @@
+ .xpWindow {
+   position: fixed;
+   width: 600px;
+   height: 400px;
+   border: 2px solid var(--accent);
+   box-shadow: 5px 5px 15px var(--darkbrown);
+   display: flex;
+   flex-direction: column;
+   z-index: 1000;
+   resize: none;
+   overflow: hidden;
+ }
+
+ .titlebar {
+   background: linear-gradient(to bottom, var(--accent), var(--darkgreen));
+   color: var(--white);
+   height: 30px;
+   line-height: 30px;
+   padding: 0 10px;
+   font-weight: bold;
+   cursor: move;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+ }
+
+ .titlebar .controls {
+   display: flex;
+   gap: 4px;
+ }
+
+ .titlebar button {
+   width: 30px;
+   height: 22px;
+   background: var(--white);
+   border: 1px solid var(--darkgreen);
+   font-weight: bolder;
+   color: var(--darkgreen);
+   cursor: pointer;
+ }
+
+ .titlebar button:hover {
+   background: linear-gradient(to bottom, #000080, #0000cd);
+   color: white;
+ }
+
+ .minimizeBtn::before {
+   content: '_';
+ }
+
+ .maximizeBtn::before {
+   content: '▢';
+   font-size: 12px;
+ }
+
+ .closeBtn::before {
+   content: '×';
+   font-size: 18px;
+ }
+
+ .content {
+   flex-grow: 1;
+   background: var(--verydarkgreen);
+   padding: 10px;
+   overflow: auto;
+ }
+
+ .xpWindow.maximized {
+   top: 0 !important;
+   left: 0 !important;
+   width: 100vw !important;
+   height: 100vh !important;
+ }
+
+ .resize-handle {
+   position: absolute;
+   background: transparent;
+ }
+
+ .resize-handle.br {
+   width: 20px;
+   height: 20px;
+   bottom: 0;
+   right: 0;
+   cursor: nwse-resize;
+ }
+
+ @media (max-width: 768px) {
+   .xpWindow {
+     top: 0 !important;
+     left: 0 !important;
+     width: 100vw !important;
+     height: 100vh !important;
+   }
+
+   .titlebar {
+     cursor: default;
+   }
+
+   .titlebar .controls button:not(.closeBtn) {
+     display: none;
+   }
+
+   .resize-handle {
+     display: none;
+   }
+ }
+
+ /* ======================
+   scrollbarforxpwindow
+====================== */
+
+
+ .xpWindow .content::-webkit-scrollbar {
+   width: 12px;
+   height: 12px;
+ }
+
+ .xpWindow .content::-webkit-scrollbar-track {
+   background: var(--accent);
+   border-radius: 6px;
+ }
+
+ .xpWindow .content::-webkit-scrollbar-thumb {
+   background-color: var(--accent);
+   border-radius: 6px;
+   border: 3px solid #f0f0f0;
+ }
+
+ .xpWindow .content::-webkit-scrollbar-thumb:hover {
+   background-color: var(--accent);
+ }
+
+ .xpWindow .content {
+   scrollbar-width: thin;
+   scrollbar-color: var(--accent) var(--white);
+ }

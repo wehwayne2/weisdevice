@@ -1,0 +1,30 @@
+#imageList {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+#imageList img {
+  cursor: pointer;
+  border: 1px solid #ccc
+}
+
+#videoView {
+  display: none;
+  flex-direction: column;
+  height: 100%;
+}
+
+#videoText {
+  padding: 10px;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+#backBtn {
+  align-self: flex-start;
+  padding: 8px 16px;
+  margin-top: 10px;
+  cursor: pointer;
+}
