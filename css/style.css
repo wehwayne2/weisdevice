@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 @import url("/css/xpstyle.css");
+
 /* ======================
    VARIABLES
 ====================== */
@@ -11,9 +12,8 @@
 
   --darkbrown: #7a6f58;
   --accent: #a1c576;
-  --darkyellow: #edca83;
   --darkgreen: #85a45e;
-  --verydarkgreen: #6d765f;
+  --verydarkgreen: #5c604a;
   --white: #ffffe2;
 }
 
@@ -51,17 +51,15 @@ canvas {
 
 .copyright {
   position: absolute;
-  bottom: 5px;
+  top: 5px;
   right: 10px;
-  /* Changed from left: 50% */
   transform: none;
-  /* Removed translateX */
   z-index: 1;
-  font-size: clamp(0.7rem, 1vw, 1rem);
+  font-size: clamp(0.5rem, 1vw, 1rem);
   color: var(--accent);
   font-family: var(--lato);
   pointer-events: none;
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 /* ======================
@@ -129,28 +127,23 @@ canvas {
   right: 2vw;
   width: auto;
   max-width: 90%;
-  color: var(--accent);
+  color: var(--darkgreen);
   opacity: 0.9;
   line-height: 1.3;
   text-align: right;
-  font-size: clamp(1.2rem, 5vw, 3rem);
+  font-size: clamp(1.5rem, 6vw, 4rem);
+  font-weight: bold;
   padding: 0;
   margin: 0;
 }
 
-.intro-text .big {
-  font-size: clamp(1.5rem, 6vw, 4rem);
-  font-weight: bold;
-  color: var(--darkgreen);
-  display: inline-block;
-}
-
 /* ======================
-   scroll embed animation
+   scroll embed animation(first page)
 ====================== */
 .scroll-hint {
   position: absolute;
-  bottom: 0.5vh; /* Responsive vertical space */
+  bottom: 0.5vh;
+  /* Responsive vertical space */
   left: 50%;
   transform: translateX(-50%);
   width: clamp(50px, 8vw, 100px);
@@ -158,4 +151,55 @@ canvas {
   opacity: 0.6;
   z-index: 10;
   pointer-events: none;
+}
+
+/* ======================
+   click explore(seconde page)
+====================== */
+.guide-text {
+  position: absolute;
+  bottom: 0.5vh;
+  /* Responsive vertical space */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(0.75rem, 2.0vw, 1.3rem);
+  color: black;
+  height: auto;
+  opacity: 0.6;
+  z-index: 10;
+  pointer-events: none;
+
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+#secondpage {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+#secondpage.fade-in {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#secondpage.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hidden {
+  display: none;
 }

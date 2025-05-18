@@ -4,6 +4,7 @@
    height: 400px;
    border: 2px solid var(--accent);
    box-shadow: 5px 5px 15px var(--darkbrown);
+   border-radius: 10px 10px 0px 0px;
    display: flex;
    flex-direction: column;
    z-index: 1000;
@@ -33,30 +34,31 @@
    width: 30px;
    height: 22px;
    background: var(--white);
-   border: 1px solid var(--darkgreen);
-   font-weight: bolder;
-   color: var(--darkgreen);
+   border: 2px solid var(--darkgreen);
+   border-radius: 5px;
    cursor: pointer;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   position: relative;
+
  }
+
+ .titlebar button img {
+   width: 16px;
+
+ }
+
 
  .titlebar button:hover {
-   background: linear-gradient(to bottom, #000080, #0000cd);
-   color: white;
+   background: var(--accent);
  }
 
- .minimizeBtn::before {
-   content: '_';
+ .titlebar button::before {
+   display: block;
  }
 
- .maximizeBtn::before {
-   content: '▢';
-   font-size: 12px;
- }
-
- .closeBtn::before {
-   content: '×';
-   font-size: 18px;
- }
 
  .content {
    flex-grow: 1;
@@ -117,21 +119,41 @@
  }
 
  .xpWindow .content::-webkit-scrollbar-track {
-   background: var(--accent);
+   background: transparent;
    border-radius: 6px;
  }
 
  .xpWindow .content::-webkit-scrollbar-thumb {
-   background-color: var(--accent);
+   background-color: transparent;
    border-radius: 6px;
-   border: 3px solid #f0f0f0;
+   border: none;
  }
 
  .xpWindow .content::-webkit-scrollbar-thumb:hover {
-   background-color: var(--accent);
+   background-color: transparent;
  }
 
  .xpWindow .content {
    scrollbar-width: thin;
-   scrollbar-color: var(--accent) var(--white);
+   scrollbar-color: var(--accent) transparent;
  }
+
+ /* ======================
+   resize-triangle
+====================== */
+ .resize-triangle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  cursor: se-resize; /* resize cursor hint */
+  background:
+    linear-gradient(45deg, transparent 50%, var(--accent) 50%);
+    transform: rotate(90deg);
+}
+@media (max-width: 1024px) {
+  .resize-triangle {
+    display: none;
+  }
+}

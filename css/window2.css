@@ -1,0 +1,16 @@
+.resize-triangle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  cursor: se-resize; /* resize cursor hint */
+  background:
+    linear-gradient(45deg, transparent 50%, var(--accent) 50%);
+    transform: rotate(90deg);
+}
+@media (max-width: 1024px) {
+  .resize-triangle {
+    display: none;
+  }
+}

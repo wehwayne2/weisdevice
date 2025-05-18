@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="css/window1.css">
   <link rel="stylesheet" href="css/window2.css">
-  
+
+
   <title>Weisdevice</title>
   <meta name="description" content="Wei's portfolio - interaction design and creative coding projects.">
 </head>
@@ -23,8 +24,8 @@
   <div id="firstpage">
     <div id="websayhiBox">
       <h1 class="intro-text">
-        Hi, I’m <span class="big">Wei.</span><br>
-        I love<br> <span class="big">Interaction Design</span> & <br> <span class="big">Creative Coding.</span>
+        Hi, I’m Wei. <br>
+        I love <br> Interaction Design & <br> Creative Coding.
       </h1>
     </div>
 
@@ -32,7 +33,10 @@
       src="https://lottie.host/7b3422ff-6736-4585-bf99-844c514ef3e7/aoY1dIR1Jc.lottie" background="transparent"
       speed="1" loop autoplay>
     </dotlottie-player>
+  </div>
 
+  <div id="secondpage">
+    <h1 class="guide-text">CLICK THE OBJECTS TO EXPLORE</h1>
   </div>
 
 
@@ -42,24 +46,101 @@
   <!-- window1-template.html -->
   <template id="window1-template">
     <div id="imageList">
-      <img src="https://via.placeholder.com/100x75?text=Image1" data-video="dQw4w9WgXcQ" alt="Image 1" />
-      <img src="https://via.placeholder.com/100x75?text=Image2" data-video="3JZ_D3ELwOQ" alt="Image 2" />
-      <img src="https://via.placeholder.com/100x75?text=Image3" data-video="V-_O7nl0Ii0" alt="Image 3" />
-      <img src="https://via.placeholder.com/100x75?text=Image4" data-video="eY52Zsg-KVI" alt="Image 4" />
-      <img src="https://via.placeholder.com/100x75?text=Image5" data-video="9bZkp7q19f0" alt="Image 5" />
+
+      <div class="thumbnail">
+        <img src="/assets/xp-asset/interphysis-thumbnail.png" alt="interphysis-thumbnail" data-video="VIDEO_ID1"
+          data-description="Description for video 1" />
+        <div class="info-bar">
+          <span class="keyword">Sci-Fi</span>
+          <span class="title">Interphysis</span>
+          <span class="year">2023</span>
+        </div>
+      </div>
+
+      <div class="thumbnail">
+        <img src="/assets/xp-asset/anglerfish-thumbnail.png" alt="anglerfish-thumbnail" data-video="VIDEO_ID2"
+          data-description="Description for video 2" />
+        <div class="info-bar">
+          <span class="keyword">Nature</span>
+          <span class="title">Anglerfish</span>
+          <span class="year">2022</span>
+        </div>
+      </div>
+
+      <div class="thumbnail">
+        <img src="/assets/xp-asset/dna-thumbnail.png" alt="dna-thumbnail"
+          data-description='Visit the <a href="https://cables.gl/view/qcuxUs" target="_blank">project page</a>'
+          />
+        <div class="info-bar">
+          <span class="keyword">Biology</span>
+          <span class="title">DNA</span>
+          <span class="year">2021</span>
+        </div>
+      </div>
+
+      <div class="thumbnail">
+        <img src="/assets/xp-asset/boxman-thumbnail.png" alt="boxman-thumbnail" data-video="VIDEO_ID4"
+          data-description="Description for video 4" />
+        <div class="info-bar">
+          <span class="keyword">Animation</span>
+          <span class="title">Boxman</span>
+          <span class="year">2020</span>
+        </div>
+      </div>
+
+      <div class="thumbnail">
+        <img src="/assets/xp-asset/futurehuman-thumbnail.png" alt="futurehuman-thumbnail"
+          data-image="/public/wei-logo.jpg" data-description="Description for image 5" />
+        <div class="info-bar">
+          <span class="keyword">Futuristic</span>
+          <span class="title">Future Human</span>
+          <span class="year">2024</span>
+        </div>
+      </div>
+
     </div>
-    <div id="videoView">
-      <iframe id="ytVideo" width="100%" height="250" src="" frameborder="0" allowfullscreen></iframe>
+
+    <div id="videoView" style="display:none; flex-direction: column;">
+      <div class="btn-bar">
+        <button id="backBtn">Back</button>
+        <button id="nextBtn">Next</button>
+      </div>
+      <iframe id="ytVideo" width="560" height="315" frameborder="0" allowfullscreen style="display:none;"></iframe>
+      <img id="largeImage" src="" alt="" style="display:none; max-width: 100%; max-height: 315px;" />
       <p id="videoText"></p>
-      <button id="backBtn">Back to Images</button>
+
+
+
     </div>
+    <div class="resize-triangle"></div>
   </template>
 
   <!-- window2-template.html -->
   <template id="window2-template">
     <p style="padding: 1000px;">mmmmmmmmm</p>
+
+    <div class="resize-triangle"></div>
   </template>
 
+
+  <!-- titlebar-template.html -->
+  <template id="titlebar-template">
+    <div class="title">TITLE_PLACEHOLDER</div>
+    <div class="controls">
+      <button class="minimizeBtn">
+        <img src="/assets/xp-asset/minimize_24dp_85A45E_FILL0_wght700_GRAD200_opsz24.svg"
+          alt="minimize_24dp_85A45E_FILL0_wght700_GRAD200_opsz24">
+      </button>
+      <button class="maximizeBtn">
+        <img src="/assets/xp-asset/crop_square_24dp_85A45E_FILL0_wght700_GRAD200_opsz24.svg"
+          alt="crop_square_24dp_85A45E_FILL0_wght700_GRAD200_opsz24">
+      </button>
+      <button class="closeBtn">
+        <img src="/assets/xp-asset/close_24dp_85A45E_FILL0_wght700_GRAD200_opsz24.svg"
+          alt="close_24dp_85A45E_FILL0_wght700_GRAD200_opsz24">
+      </button>
+    </div>
+  </template>
 
 
   <script type="text/javascript" src="js/patch.js" async></script>
