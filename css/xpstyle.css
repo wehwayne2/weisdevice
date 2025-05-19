@@ -89,7 +89,11 @@
    cursor: nwse-resize;
  }
 
- @media (max-width: 768px) {
+ /* ======================
+   creat fullscreen window for mobile and tablet
+====================== */
+
+ @media (max-width: 1024px) {
    .xpWindow {
      top: 0 !important;
      left: 0 !important;
@@ -111,7 +115,7 @@
  }
 
  /* ======================
-   scrollbarforxpwindow
+   scrollbarforxpwindow(not sure
 ====================== */
 
 
