@@ -4,7 +4,7 @@
   align-items: center;
   gap: 40px; 
   width: 100%;
-  cursor: pointer;
+  
   box-sizing: border-box;
   padding: 4rem 2rem 4rem 2rem;
 
@@ -15,6 +15,7 @@
   max-width: 500px;
   box-sizing: border-box;
   border-radius: 4px 4px 0px 0px;
+  cursor: pointer;
 
 }
 
