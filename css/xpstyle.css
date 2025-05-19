@@ -10,6 +10,8 @@
    z-index: 1000;
    resize: none;
    overflow: hidden;
+   margin: 0;
+   padding: 0;
  }
 
  .titlebar {
