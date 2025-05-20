@@ -105,7 +105,7 @@ function createWindow(id) {
   // Replace the title text dynamically
   titlebarContent.querySelector('.title').textContent = windowTitle;
 
-  // Append to your titlebar div
+  // Append to titlebar div
   titlebar.appendChild(titlebarContent);
 
   win.appendChild(titlebar);
@@ -291,3 +291,4 @@ window.addEventListener('resize', () => {
     }
   });
 });
+
