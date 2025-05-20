@@ -128,30 +128,30 @@ function createWindow(id) {
     const items = Array.from(imageList.querySelectorAll('img'));
     let currentIndex = -1;
 
-function showItemAt(index) {
-  const img = items[index];
-  const videoId = img.dataset.video;
-  const templateId = img.dataset.descriptionTemplate;
-  const descriptionTemplate = templateId
-    ? document.getElementById(templateId)
-    : null;
-  const description = descriptionTemplate
-    ? descriptionTemplate.innerHTML
-    : img.alt || '';
+    function showItemAt(index) {
+      const img = items[index];
+      const videoId = img.dataset.video;
+      const templateId = img.dataset.descriptionTemplate;
+      const descriptionTemplate = templateId
+        ? document.getElementById(templateId)
+        : null;
+      const description = descriptionTemplate
+        ? descriptionTemplate.innerHTML
+        : img.alt || '';
 
-  if (videoId) {
-    ytVideo.src = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`;
-    ytVideo.style.display = 'block';
-  } else {
-    ytVideo.src = '';
-    ytVideo.style.display = 'none';
-  }
+      if (videoId) {
+        ytVideo.src = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`;
+        ytVideo.style.display = 'block';
+      } else {
+        ytVideo.src = '';
+        ytVideo.style.display = 'none';
+      }
 
-  videoText.innerHTML = description;
-  imageList.style.display = 'none';
-  videoView.style.display = 'flex';
-  currentIndex = index;
-}
+      videoText.innerHTML = description;
+      imageList.style.display = 'none';
+      videoView.style.display = 'flex';
+      currentIndex = index;
+    }
 
     items.forEach((img, index) => {
       img.addEventListener('click', () => showItemAt(index));
