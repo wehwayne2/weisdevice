@@ -118,64 +118,57 @@ function createWindow(id) {
 
   // Video logic for WORK window
   if (id === 1) {
-  const imageList = content.querySelector('#imageList');
-  const videoView = content.querySelector('#videoView');
-  const ytVideo = content.querySelector('#ytVideo');
-  const largeImage = content.querySelector('#largeImage'); // for image display
-  const videoText = content.querySelector('#videoText');
-  const backBtn = content.querySelector('#backBtn');
-  const nextBtn = content.querySelector('#nextBtn');
+    const imageList = content.querySelector('#imageList');
+    const videoView = content.querySelector('#videoView');
+    const ytVideo = content.querySelector('#ytVideo');
+    const videoText = content.querySelector('#videoText');
+    const backBtn = content.querySelector('#backBtn');
+    const nextBtn = content.querySelector('#nextBtn');
 
-  const items = Array.from(imageList.querySelectorAll('img'));
-  let currentIndex = -1;
+    const items = Array.from(imageList.querySelectorAll('img'));
+    let currentIndex = -1;
 
-  function showItemAt(index) {
-    const img = items[index];
-    const videoId = img.dataset.video;
-    const imageSrc = img.dataset.image;
-    const description = img.dataset.description || img.alt || '';
+function showItemAt(index) {
+  const img = items[index];
+  const videoId = img.dataset.video;
+  const templateId = img.dataset.descriptionTemplate;
+  const descriptionTemplate = templateId
+    ? document.getElementById(templateId)
+    : null;
+  const description = descriptionTemplate
+    ? descriptionTemplate.innerHTML
+    : img.alt || '';
 
-    if (videoId) {
-      // Show YouTube video
-      ytVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-      ytVideo.style.display = 'block';
-      largeImage.style.display = 'none';
-    } else if (imageSrc) {
-      // Show large image
-      largeImage.src = imageSrc;
-      largeImage.style.display = 'block';
-      ytVideo.src = '';
-      ytVideo.style.display = 'none';
-    } else {
-      // No video or image, just show description or fallback
-      ytVideo.src = '';
-      ytVideo.style.display = 'none';
-      largeImage.style.display = 'none';
-    }
-
-    videoText.innerHTML = description;
-    imageList.style.display = 'none';
-    videoView.style.display = 'flex';
-    currentIndex = index;
+  if (videoId) {
+    ytVideo.src = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`;
+    ytVideo.style.display = 'block';
+  } else {
+    ytVideo.src = '';
+    ytVideo.style.display = 'none';
   }
 
-  items.forEach((img, index) => {
-    img.addEventListener('click', () => showItemAt(index));
-  });
-
-  backBtn.addEventListener('click', () => {
-    ytVideo.src = '';
-    largeImage.style.display = 'none';
-    videoView.style.display = 'none';
-    imageList.style.display = 'flex';
-    currentIndex = -1;
-  });
-
-  nextBtn.addEventListener('click', () => {
-    let nextIndex = (currentIndex + 1) % items.length;
-    showItemAt(nextIndex);
-  });
+  videoText.innerHTML = description;
+  imageList.style.display = 'none';
+  videoView.style.display = 'flex';
+  currentIndex = index;
 }
+
+    items.forEach((img, index) => {
+      img.addEventListener('click', () => showItemAt(index));
+    });
+
+    backBtn.addEventListener('click', () => {
+      ytVideo.src = '';
+      videoView.style.display = 'none';
+      imageList.style.display = 'flex';
+      currentIndex = -1;
+    });
+
+    nextBtn.addEventListener('click', () => {
+      let nextIndex = (currentIndex + 1) % items.length;
+      showItemAt(nextIndex);
+    });
+  }
   win.appendChild(content);
 
   // Resize handle
@@ -240,10 +233,29 @@ function createWindow(id) {
   }
 
   // Controls
-  titlebar.querySelector('.closeBtn').onclick = () => win.style.display = 'none';
-  titlebar.querySelector('.minimizeBtn').onclick = () => win.style.display = 'none';
-  titlebar.querySelector('.maximizeBtn').onclick = () => win.classList.toggle('maximized');
+  function stopMediaInWindow(id) {
+    const win = windows[id];
+    const content = win?.querySelector('.content');
+    if (!content || id !== 1) return;
 
+    const ytVideo = content.querySelector('#ytVideo');
+    const videoView = content.querySelector('#videoView');
+    const imageList = content.querySelector('#imageList');
+
+    if (ytVideo) ytVideo.src = '';
+    if (videoView) videoView.style.display = 'none';
+    if (imageList) imageList.style.display = 'flex';
+  }
+
+  titlebar.querySelector('.closeBtn').onclick = () => {
+    win.style.display = 'none';
+    stopMediaInWindow(id);
+  };
+  titlebar.querySelector('.minimizeBtn').onclick = () => {
+    win.style.display = 'none';
+    stopMediaInWindow(id);
+  };
+  titlebar.querySelector('.maximizeBtn').onclick = () => win.classList.toggle('maximized');
   return win;
 }
 
