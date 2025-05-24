@@ -13,9 +13,9 @@
   --lato: "Lato", Arial, sans-serif;
 
   --darkbrown: #7a6f58;
-  --accent: #bad88b;
-  --darkgreen: #85a362;
-  --verydarkgreen: #596045;
+  --accent: #a0ba70;
+  --darkgreen: #749251;
+  --verydarkgreen: #5a5c48;
   --white: #ffffe2;
 
   --dot-size: 1.0px;
@@ -24,13 +24,13 @@
   /* horizontal spacing */
   --dot-spacing-y: 6.93px;
   /* vertical spacing ~ dot-spacing-x * sqrt(3)/2 */
-  --dot-color: #652200;
+  --dot-color: #ff0000;
 }
 
 /* ======================
    BASE RESET
 ====================== */
-* {
+canvas {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -38,6 +38,40 @@
   -ms-user-select: none;
   user-select: none;
   box-sizing: border-box;
+
+    width: 100vw;
+  height: 100vh;
+  display: block;
+
+
+}
+
+
+:root {
+  --dot-size: 1.5px;       /* radius of each dot */
+  --dot-spacing-x: 8px;    /* horizontal spacing */
+  --dot-spacing-y: 6.93px; /* vertical spacing ~ dot-spacing-x * sqrt(3)/2 */
+  --dot-color: rgba(0, 0, 0, 0.12);
+}
+
+.pixel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  background-color: transparent;
+
+  background-image:
+    radial-gradient(circle, var(--dot-color) var(--dot-size), transparent calc(var(--dot-size) + 1px)),
+    radial-gradient(circle, var(--dot-color) var(--dot-size), transparent calc(var(--dot-size) + 1px));
+  
+  background-size: var(--dot-spacing-x) var(--dot-spacing-y);
+  background-position: 0 0, calc(var(--dot-spacing-x) / 2) calc(var(--dot-spacing-y) / 2);
+
+  opacity: 0.2;
+  z-index: 10;
 }
 
 body {
@@ -48,15 +82,6 @@ body {
   font-family: var(--lato);
 }
 
-canvas {
-  width: 100vw;
-  height: 100vh;
-  display: block;
-
-}
-
-
-
 
 
 /* ======================
@@ -65,12 +90,12 @@ canvas {
 
 .copyright {
   position: absolute;
-  top: 5px;
+  bottom: 5px;
   right: 10px;
   transform: none;
   z-index: 1;
   font-size: clamp(0.5rem, 1vw, 1rem);
-  color: var(--accent);
+  color: var(--darkgreen);
   font-family: var(--lato);
   pointer-events: none;
   opacity: 0.5;
@@ -93,7 +118,7 @@ canvas {
   margin: 0 auto;
   opacity: 1;
   transition: opacity 0.5s ease;
-  pointer-events: none;
+  pointer-events: fill;
 }
 
 /* ======================
@@ -164,7 +189,7 @@ canvas {
   height: auto;
   opacity: 0.6;
   z-index: 10;
-  pointer-events: none;
+  cursor: pointer;
 }
 
 /* ======================
@@ -181,7 +206,7 @@ canvas {
   height: auto;
   opacity: 0.6;
   z-index: 10;
-  pointer-events: none;
+  pointer-events: visible;
 
   animation: fadeInOut 2s ease-in-out infinite;
 }

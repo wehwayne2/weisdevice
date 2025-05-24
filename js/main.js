@@ -83,6 +83,9 @@ function resizeCanvas() {
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
+
+
+
 // === XP-STYLE WINDOW SYSTEM ===
 
 const windows = {};
