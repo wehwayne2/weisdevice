@@ -55,26 +55,7 @@ canvas {
 
 }
 
-.pixel-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  background-color: transparent;
 
-  background-image:
-    radial-gradient(circle, var(--dot-color) var(--dot-size), transparent calc(var(--dot-size) + 1px)),
-    radial-gradient(circle, var(--dot-color) var(--dot-size), transparent calc(var(--dot-size) + 1px));
-
-
-  background-size: var(--dot-spacing-x) var(--dot-spacing-y);
-  background-position: 0 0, calc(var(--dot-spacing-x) / 2) calc(var(--dot-spacing-y) / 2);
-
-  opacity: 0.02;
-  z-index: 1;
-}
 
 
 
