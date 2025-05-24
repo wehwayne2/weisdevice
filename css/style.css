@@ -13,10 +13,18 @@
   --lato: "Lato", Arial, sans-serif;
 
   --darkbrown: #7a6f58;
-  --accent: #a1c576;
-  --darkgreen: #85a45e;
-  --verydarkgreen: #5c604a;
+  --accent: #bad88b;
+  --darkgreen: #85a362;
+  --verydarkgreen: #596045;
   --white: #ffffe2;
+
+  --dot-size: 1.0px;
+  /* radius of each dot */
+  --dot-spacing-x: 8px;
+  /* horizontal spacing */
+  --dot-spacing-y: 6.93px;
+  /* vertical spacing ~ dot-spacing-x * sqrt(3)/2 */
+  --dot-color: #652200;
 }
 
 /* ======================
@@ -44,7 +52,30 @@ canvas {
   width: 100vw;
   height: 100vh;
   display: block;
+
 }
+
+.pixel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  background-color: transparent;
+
+  background-image:
+    radial-gradient(circle, var(--dot-color) var(--dot-size), transparent calc(var(--dot-size) + 1px)),
+    radial-gradient(circle, var(--dot-color) var(--dot-size), transparent calc(var(--dot-size) + 1px));
+
+
+  background-size: var(--dot-spacing-x) var(--dot-spacing-y);
+  background-position: 0 0, calc(var(--dot-spacing-x) / 2) calc(var(--dot-spacing-y) / 2);
+
+  opacity: 0.02;
+  z-index: 1;
+}
+
 
 
 /* ======================
@@ -73,7 +104,7 @@ canvas {
   /* Moved down to make space for intro text */
   right: 3%;
   transform: none;
-  z-index: 1;
+  z-index: 999;
   width: 90%;
   height: auto;
   font-family: var(--paytone-one);
