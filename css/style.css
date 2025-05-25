@@ -18,13 +18,10 @@
   --verydarkgreen: #5a5c48;
   --white: #ffffe2;
 
-  --dot-size: 1.0px;
-  /* radius of each dot */
+  --dot-size: 1.5px;
   --dot-spacing-x: 8px;
-  /* horizontal spacing */
   --dot-spacing-y: 6.93px;
-  /* vertical spacing ~ dot-spacing-x * sqrt(3)/2 */
-  --dot-color: #ff0000;
+  --dot-color: rgba(255, 255, 255, 0.3);
 }
 
 /* ======================
@@ -39,19 +36,11 @@ canvas {
   user-select: none;
   box-sizing: border-box;
 
-    width: 100vw;
+  width: 100vw;
   height: 100vh;
   display: block;
 
 
-}
-
-
-:root {
-  --dot-size: 1.5px;       /* radius of each dot */
-  --dot-spacing-x: 8px;    /* horizontal spacing */
-  --dot-spacing-y: 6.93px; /* vertical spacing ~ dot-spacing-x * sqrt(3)/2 */
-  --dot-color: rgba(0, 0, 0, 0.12);
 }
 
 .pixel-overlay {
@@ -66,13 +55,34 @@ canvas {
   background-image:
     radial-gradient(circle, var(--dot-color) var(--dot-size), transparent calc(var(--dot-size) + 1px)),
     radial-gradient(circle, var(--dot-color) var(--dot-size), transparent calc(var(--dot-size) + 1px));
-  
+
   background-size: var(--dot-spacing-x) var(--dot-spacing-y);
   background-position: 0 0, calc(var(--dot-spacing-x) / 2) calc(var(--dot-spacing-y) / 2);
 
   opacity: 0.2;
-  z-index: 10;
+  z-index: 1;
 }
+
+.vignette-edges {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+
+  box-shadow:
+    inset 0 0 20px 10px rgba(255, 255, 255, 0.715);
+}
+
+@media (max-width: 1024px) {
+  .vignette-edges {
+    box-shadow: none;
+  }
+}
+
+
 
 body {
   margin: 0;
@@ -118,7 +128,7 @@ body {
   margin: 0 auto;
   opacity: 1;
   transition: opacity 0.5s ease;
-  pointer-events: fill;
+  cursor: text;
 }
 
 /* ======================
