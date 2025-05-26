@@ -1,3 +1,5 @@
+
+
 // === CONFIGURATION ===
 function isMobile() {
   return window.innerWidth <= 768;
