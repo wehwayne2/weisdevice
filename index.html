@@ -17,24 +17,25 @@
 
   </header>
 
-  <div id="firstpage">
+  <nav id="firstpage">
     <div id="websayhiBox">
       <h1 class="intro-text">
-        Hi, I’m Wei. I love <br> Interaction Design & <br> Creative Coding.
+        Hi, I’m Wei. <br>I love <br> Interaction Design & <br> Creative Coding.
       </h1>
     </div>
 
-    <dotlottie-player class="scroll-hint"
+    <dotlottie-player class="scroll-hint" id="myLottie"
       src="https://lottie.host/7b3422ff-6736-4585-bf99-844c514ef3e7/aoY1dIR1Jc.lottie" background="transparent"
       speed="1" loop autoplay>
     </dotlottie-player>
-  </div>
+  </nav>
 
   <div id="secondpage">
     <h1 class="guide-text">CLICK THE OBJECTS TO EXPLORE</h1>
   </div>
- 
+
   <canvas id="glcanvas"></canvas>
+
   <div class="pixel-overlay"></div>
   <div class="vignette-edges"></div>
 
@@ -49,7 +50,7 @@
 
       <div class="thumbnail">
         <img src="/assets/xp-asset/interphysis-thumbnail.png" alt="interphysis-thumbnail" data-video="vizL1WttZts"
-          data-description-template="desc-interphysis"/>
+          data-description-template="desc-interphysis" />
         <div class="info-bar">
           <span class="keyword">Wireless Game Module</span>
           <span class="title">Interphysis</span>
@@ -68,8 +69,7 @@
       </div>
 
       <div class="thumbnail">
-        <img src="/assets/xp-asset/dna-thumbnail.png" alt="dna-thumbnail"
-          data-description-template="desc-dna"/>
+        <img src="/assets/xp-asset/dna-thumbnail.png" alt="dna-thumbnail" data-description-template="desc-dna" />
         <div class="info-bar">
           <span class="keyword">Web-based Interaction</span>
           <span class="title">DNA</span>
@@ -90,12 +90,12 @@
       <div class="thumbnail">
         <img src="/assets/xp-asset/futurehuman-thumbnail.png" alt="futurehuman-thumbnail"
           data-description-template="desc-futurehuman" />
-/> />
+        /> />
         <div class="info-bar">
           <span class="keyword">Illustration</span>
           <span class="title">Future Human</span>
           <span class="year">2022</span>
-          
+
         </div>
       </div>
 
@@ -103,13 +103,13 @@
 
     <div id="videoView" style="display:none; flex-direction: column;">
       <div class="btn-bar">
-        <button id="backBtn">Back</button>
-        <button id="nextBtn">Next</button>
+        <button id="backBtn"> Work</button>
+
       </div>
       <iframe id="ytVideo" width="560" height="315" frameborder="0" allowfullscreen style="display:none;"></iframe>
       <img id="largeImage" src="" alt="" style="display:none; max-width: 100%; max-height: 315px;" />
       <p id="videoText"></p>
-
+      <button id="nextBtn">Next</button>
 
 
     </div>
@@ -143,47 +143,42 @@
     </div>
   </template>
 
- <!-- //////////////////////////////////////works-projects-template///////////////////////////////////////////// -->
+  <!-- //////////////////////////////////////works-projects-template///////////////////////////////////////////// -->
 
- <!-- desc-interphysis-template.html -->
+  <!-- desc-interphysis-template.html -->
   <template id="desc-interphysis">
-  Description for video 1 hi
-</template>
+    “InterPhysis” is a portmanteau of “Interface” and “Physis,” symbolizing how technological advancement is gradually blurring the line between the physical and digital worlds. This experimental game design explores the fluid transformation between a “physicalized interface” and an “interfaced physicalization.”
+  </template>
   <!-- desc-anglerfish-template.html -->
-<template id="desc-anglerfish">
-  Description for video 2 very clean
-</template>
- <!-- desc-dna-template.html -->
-<template id="desc-dna">
-  Visit the <a href="https://cables.gl/view/qcuxUs" target="_blank">project page</a>
-</template>
- <!-- desc-boxman-template.html -->
-<template id="desc-boxman">
-  Description for video 4 bbbbb
-</template>
- <!-- desc-futurehuman-template.html -->
-<template id="desc-futurehuman">
-  <img src="/assets/xp-asset/futurehumancontent-2.jpg" style="max-width: 100%; height: 100%;" />
-  <img src="/assets/xp-asset/futurehumancontent-1.jpg" style="max-width: 100%; height: 100%;" />
-</template>
+  <template id="desc-anglerfish">
+    Description for video 2 very clean
+  </template>
+  <!-- desc-dna-template.html -->
+  <template id="desc-dna">
+    Visit the <a href="https://cables.gl/view/qcuxUs" target="_blank">project page</a>
+  </template>
+  <!-- desc-boxman-template.html -->
+  <template id="desc-boxman">
+    Description for video 4 bbbbb
+  </template>
+  <!-- desc-futurehuman-template.html -->
+  <template id="desc-futurehuman">
+    <img src="/assets/xp-asset/futurehumancontent-2.jpg" style="max-width: 100%; height: 100%;" />
+    <img src="/assets/xp-asset/futurehumancontent-1.jpg" style="max-width: 100%; height: 100%;" />
+  </template>
 
 
 
 
- <!--  -->
+  <!--  -->
 
   <script type="text/javascript" src="js/patch.js" async></script>
 
   <script src="/js/main.js" defer></script>
-  
+
 
   <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
 
 </body>
 
 </html>
-
-
-
-
-

@@ -15,8 +15,9 @@
   --darkbrown: #7a6f58;
   --accent: #a0ba70;
   --darkgreen: #749251;
-  --verydarkgreen: #3e4936;
+  --verydarkgreen: #41463c;
   --white: #ffffe2;
+  --yellow: #fdf7a7;
 
   --dot-size: 1.5px;
   --dot-spacing-x: 8px;
@@ -27,7 +28,7 @@
 /* ======================
    BASE RESET
 ====================== */
-canvas {
+#glcanvas {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -58,7 +59,7 @@ canvas {
   background-size: var(--dot-spacing-x) var(--dot-spacing-y);
   background-position: 0 0, calc(var(--dot-spacing-x) / 2) calc(var(--dot-spacing-y) / 2);
 
-  opacity: 0.2;
+  opacity: 0.25;
   z-index: 1;
 }
 
@@ -72,7 +73,9 @@ canvas {
   z-index: 1;
   
   box-shadow:
-    inset 0 0 35px 15px var(--white);
+    inset 0 0 5px 5px var(--verydarkgreen);
+
+
 }
 
 @media (max-width: 1024px) {
@@ -91,6 +94,7 @@ body {
   height: 100%;
   overflow: hidden;
   font-family: var(--lato);
+  background-color: var(--white);
 }
 
 
@@ -101,12 +105,12 @@ body {
 
 .copyright {
   position: absolute;
-  bottom: 3%;
-  right: 2%;
+  bottom: 1%;
+  right: 1%;
   transform: none;
   z-index: 1;
   font-size: clamp(0.5rem, 1vw, 1rem);
-  color: var(--darkgreen);
+  color: var(--accent);
   font-family: var(--lato);
   pointer-events: auto;
   cursor: text;
@@ -179,12 +183,12 @@ body {
   right: 2vw;
   width: auto;
   max-width: 90%;
-  color: var(--accent);
-
+  color: var(--verydarkgreen);
+  opacity: 0.8;
 
   line-height: 1.3;
   text-align: right;
-  font-size: clamp(1.5rem, 10vw, 5rem);
+  font-size: clamp(1.5rem, 8vw, 5rem);
   font-weight: bold;
   padding: 0;
   margin: 0;
@@ -202,9 +206,9 @@ body {
   transform: translateX(-50%);
   width: clamp(50px, 8vw, 100px);
   height: auto;
-  opacity: 0.6;
+  opacity: 0.9;
   z-index: 10;
-  cursor: pointer;
+  pointer-events: none;
 }
 
 /* ======================
@@ -212,14 +216,14 @@ body {
 ====================== */
 .guide-text {
   position: absolute;
-  bottom: 0.5vh;
+  bottom: 1vh;
   /* Responsive vertical space */
   left: 50%;
   transform: translateX(-50%);
   font-size: clamp(0.75rem, 2.0vw, 1.3rem);
   color: black;
   height: auto;
-  opacity: 0.6;
+  opacity: 1;
   z-index: 10;
   pointer-events: visible;
 
@@ -230,11 +234,11 @@ body {
 
   0%,
   100% {
-    opacity: 0.1;
+    opacity: 0.7;
   }
 
   50% {
-    opacity: 0.5;
+    opacity: 1;
   }
 }
 
