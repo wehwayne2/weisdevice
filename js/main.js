@@ -1,5 +1,3 @@
-
-
 // === CONFIGURATION ===
 function isMobile() {
   return window.innerWidth <= 768;
@@ -21,21 +19,18 @@ const secondBox = document.getElementById("secondpage");
 
 function myFunctionStart() {
   if (isVisible) {
-    //hide firstpage
     firstBox.classList.remove("fade-in");
     firstBox.classList.add("fade-out");
     setTimeout(() => {
       firstBox.classList.add("hidden");
     }, 500);
-    //show secondpage
+
     secondBox.classList.remove("fade-out", "hidden");
     secondBox.classList.add("fade-in");
   } else {
-    //show firstpage
     firstBox.classList.remove("hidden", "fade-out");
     firstBox.classList.add("fade-in");
 
-    //hide secondpage
     secondBox.classList.remove("fade-in");
     secondBox.classList.add("fade-out");
     setTimeout(() => secondBox.classList.add("hidden"), 500);
@@ -43,9 +38,43 @@ function myFunctionStart() {
   isVisible = !isVisible;
 }
 
+function myFunctionPC() {
+  [firstBox, secondBox].forEach(box => {
+    box.classList.remove("fade-in");
+    box.classList.add("fade-out");
+    setTimeout(() => {
+      box.classList.add("hidden");
+    }, 500);
+  });
+  Object.values(windows).forEach(win => {
+    win.style.display = 'none';
+  });
+  isVisible = false;
+}
+
 window.addEventListener("load", () => {
   firstBox.classList.add("fade-in");
   secondBox.classList.add("hidden");
+});
+
+// === HISTORY HANDLER ===
+window.addEventListener('popstate', () => {
+  const hash = location.hash;
+  if (hash.startsWith('#work/video')) {
+    const index = parseInt(hash.split('video')[1]) - 1;
+    if (!isNaN(index)) {
+      toggleWindow(1);
+      const workWin = windows[1];
+      if (workWin) {
+        const items = Array.from(workWin.querySelectorAll('#imageList img'));
+        if (items[index]) items[index].click();
+      }
+    }
+  } else if (hash === '#work') {
+    toggleWindow(1);
+  } else if (hash === '#about') {
+    toggleWindow(2);
+  }
 });
 
 // === CABLES.GL PATCH INIT ===
@@ -72,10 +101,10 @@ document.addEventListener("CABLES.jsLoaded", function () {
     outSidefunctionMail: myFunctionMail,
     outSidefunctionAbout: myFunctionAbout,
     outSidefunctionStart: myFunctionStart,
+    outSidefunctionPC: myFunctionPC,
   });
 });
 
-// === RESIZE GL CANVAS ===
 function resizeCanvas() {
   const canvas = document.getElementById('glcanvas');
   canvas.width = window.innerWidth;
@@ -85,11 +114,7 @@ function resizeCanvas() {
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
-
-
-
 // === XP-STYLE WINDOW SYSTEM ===
-
 const windows = {};
 let zIndexCounter = 1000;
 
@@ -98,31 +123,21 @@ function createWindow(id) {
   win.className = 'xpWindow';
   win.style.zIndex = ++zIndexCounter;
 
-  // Titlebar
   const titlebar = document.createElement('div');
   titlebar.className = 'titlebar';
   const windowTitle = id === 1 ? 'WORK' : id === 2 ? 'ABOUT' : `Window ${id}`;
 
-
-  //titlebar-template append
   const titlebarTemplate = document.querySelector('#titlebar-template');
   const titlebarContent = titlebarTemplate.content.cloneNode(true);
-
-  // Replace the title text dynamically
   titlebarContent.querySelector('.title').textContent = windowTitle;
-
-  // Append to titlebar div
   titlebar.appendChild(titlebarContent);
-
   win.appendChild(titlebar);
 
-  // Content
   const content = document.createElement('div');
   content.className = 'content';
   const template = document.querySelector(`#window${id}-template`);
   if (template) content.innerHTML = template.innerHTML;
 
-  // Video logic for WORK window
   if (id === 1) {
     const imageList = content.querySelector('#imageList');
     const videoView = content.querySelector('#videoView');
@@ -138,12 +153,8 @@ function createWindow(id) {
       const img = items[index];
       const videoId = img.dataset.video;
       const templateId = img.dataset.descriptionTemplate;
-      const descriptionTemplate = templateId
-        ? document.getElementById(templateId)
-        : null;
-      const description = descriptionTemplate
-        ? descriptionTemplate.innerHTML
-        : img.alt || '';
+      const descriptionTemplate = templateId ? document.getElementById(templateId) : null;
+      const description = descriptionTemplate ? descriptionTemplate.innerHTML : img.alt || '';
 
       if (videoId) {
         ytVideo.src = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`;
@@ -157,6 +168,8 @@ function createWindow(id) {
       imageList.style.display = 'none';
       videoView.style.display = 'flex';
       currentIndex = index;
+
+      history.pushState({ page: `video-${index}` }, '', `#work/video${index + 1}`);
     }
 
     items.forEach((img, index) => {
@@ -168,6 +181,7 @@ function createWindow(id) {
       videoView.style.display = 'none';
       imageList.style.display = 'flex';
       currentIndex = -1;
+      history.pushState({ page: 'work-root' }, '', '#work');
     });
 
     nextBtn.addEventListener('click', () => {
@@ -177,14 +191,11 @@ function createWindow(id) {
   }
   win.appendChild(content);
 
-  // Resize handle
   const resizeHandle = document.createElement('div');
   resizeHandle.className = 'resize-handle br';
   win.appendChild(resizeHandle);
-
   document.body.appendChild(win);
 
-  // Window positioning
   let width = 600, height = 400, offsetX = 0, offsetY = 0;
   if (id === 1) { width = 800; height = 500; offsetX = -100; offsetY = -50; }
   if (id === 2) { width = 500; height = 350; offsetX = 100; offsetY = 50; }
@@ -194,7 +205,6 @@ function createWindow(id) {
   win.style.left = `${(window.innerWidth - width) / 2 + offsetX}px`;
   win.style.top = `${(window.innerHeight - height) / 2 + offsetY}px`;
 
-  // Dragging
   if (!isMobile()) {
     let isDragging = false, dragOffsetX = 0, dragOffsetY = 0;
     titlebar.addEventListener('mousedown', e => {
@@ -216,7 +226,6 @@ function createWindow(id) {
     window.addEventListener('mouseup', () => isDragging = false);
   }
 
-  // Resizing
   if (!isMobile()) {
     let resizing = false, startX, startY, startWidth, startHeight;
     resizeHandle.addEventListener('mousedown', e => {
@@ -238,7 +247,6 @@ function createWindow(id) {
     window.addEventListener('mouseup', () => resizing = false);
   }
 
-  // Controls
   function stopMediaInWindow(id) {
     const win = windows[id];
     const content = win?.querySelector('.content');
@@ -288,6 +296,8 @@ function toggleWindow(id) {
         ytVideo.src = '';
       }
     }
+    if (isMobile()) win.classList.add('maximized');
+    else win.classList.remove('maximized');
     if (content) content.scrollTop = 0;
   }
 }
@@ -301,7 +311,6 @@ function myFunctionAbout() {
   toggleWindow(2);
 }
 
-// === RESPONSIVE ===
 window.addEventListener('resize', () => {
   Object.values(windows).forEach(win => {
     if (isMobile()) {
@@ -309,4 +318,3 @@ window.addEventListener('resize', () => {
     }
   });
 });
-
