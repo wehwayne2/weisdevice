@@ -1,7 +1,16 @@
-// === CONFIGURATION ===
+// === UTILS ===
 function isMobile() {
   return window.innerWidth <= 768;
 }
+
+// === GLOBAL STATE ===
+const windows = {};
+let zIndexCounter = 1000;
+let isVisible = true;
+
+// === DOM ELEMENTS ===
+const firstBox = document.getElementById("firstpage");
+const secondBox = document.getElementById("secondpage");
 
 // === EMAIL HANDLER ===
 function myFunctionMail() {
@@ -12,18 +21,12 @@ function myFunctionMail() {
   window.location.href = mailtoLink;
 }
 
-// === FIRST PAGE ANIMATION ===
-let isVisible = true;
-const firstBox = document.getElementById("firstpage");
-const secondBox = document.getElementById("secondpage");
-
+// === PAGE TRANSITION ===
 function myFunctionStart() {
   if (isVisible) {
     firstBox.classList.remove("fade-in");
     firstBox.classList.add("fade-out");
-    setTimeout(() => {
-      firstBox.classList.add("hidden");
-    }, 500);
+    setTimeout(() => firstBox.classList.add("hidden"), 500);
 
     secondBox.classList.remove("fade-out", "hidden");
     secondBox.classList.add("fade-in");
@@ -37,54 +40,42 @@ function myFunctionStart() {
   }
   isVisible = !isVisible;
 }
- 
+
 window.addEventListener("load", () => {
   firstBox.classList.add("fade-in");
   secondBox.classList.add("hidden");
 });
 
-
-// === warning wheelpc  ===
+// === REMOVE RESET WARNING ===
 function myFunctionPC() {
-  // Hide first and second page
   [firstBox, secondBox].forEach(box => {
     box.classList.remove("fade-in");
     box.classList.add("fade-out");
-    setTimeout(() => {
-      box.classList.add("hidden");
-    }, 500);
+    setTimeout(() => box.classList.add("hidden"), 500);
   });
 
-  // Hide all open windows
   Object.values(windows).forEach(win => {
     win.style.display = 'none';
   });
   isVisible = false;
 
-  // ////////////////////Create and show a warning window using ID 99
-  const id = 99;
-  if (!windows[id]) {
-    const warningWin = createWindow(id);
-    // Customize content and title
-    const title = warningWin.querySelector('.title');
-    if (title) title.textContent = 'WARNING';
-    const content = warningWin.querySelector('.content');
-    if (content) content.innerHTML = `<p style="padding: 1em;">This action resets the interface. Proceed with caution.</p>`;
-  }
-
-  windows[id].style.display = 'flex';
-  windows[id].style.zIndex = ++zIndexCounter;
+  
+    const mobileWarning = document.getElementById("warningwindow-mobile");
+    if (mobileWarning) {
+      mobileWarning.style.display = "flex";
+    }
+  
 }
 
-// === CABLES.GL PATCH INIT ===
+// === CABLES.GL INIT ===
 function showError(initiator, ...args) {
-  CABLES.logErrorConsole("[" + initiator + "]", ...args);
+  CABLES.logErrorConsole(`[${initiator}]`, ...args);
 }
 
 function patchInitialized(patch) { }
 function patchFinishedLoading(patch) { }
 
-document.addEventListener("CABLES.jsLoaded", function () {
+document.addEventListener("CABLES.jsLoaded", () => {
   CABLES.patch = new CABLES.Patch({
     patch: CABLES.exportedPatch,
     prefixAssetPath: "",
@@ -104,19 +95,16 @@ document.addEventListener("CABLES.jsLoaded", function () {
   });
 });
 
+// === RESIZE CANVAS ===
 function resizeCanvas() {
   const canvas = document.getElementById('glcanvas');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 }
-
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
-// === XP-STYLE WINDOW SYSTEM ===
-const windows = {};
-let zIndexCounter = 1000;
-
+// === WINDOW SYSTEM ===
 function createWindow(id) {
   const win = document.createElement('div');
   win.className = 'xpWindow';
@@ -124,12 +112,9 @@ function createWindow(id) {
 
   const titlebar = document.createElement('div');
   titlebar.className = 'titlebar';
-  const windowTitle = id === 1 ? 'WORK' : id === 2 ? 'ABOUT' : `Window ${id}`;
-
   const titlebarTemplate = document.querySelector('#titlebar-template');
   const titlebarContent = titlebarTemplate.content.cloneNode(true);
-  titlebarContent.querySelector('.title').textContent = windowTitle;
-  
+  titlebarContent.querySelector('.title').textContent = id === 1 ? 'WORK' : id === 2 ? 'ABOUT' : `Window ${id}`;
   titlebar.appendChild(titlebarContent);
   win.appendChild(titlebar);
 
@@ -139,56 +124,9 @@ function createWindow(id) {
   if (template) content.innerHTML = template.innerHTML;
 
   if (id === 1) {
-    const imageList = content.querySelector('#imageList');
-    const videoView = content.querySelector('#videoView');
-    const ytVideo = content.querySelector('#ytVideo');
-    const videoText = content.querySelector('#videoText');
-    const backBtn = content.querySelector('#backBtn');
-    const nextBtn = content.querySelector('#nextBtn');
-
-    const items = Array.from(imageList.querySelectorAll('img'));
-    let currentIndex = -1;
-
-    function showItemAt(index) {
-      const img = items[index];
-      const videoId = img.dataset.video;
-      const templateId = img.dataset.descriptionTemplate;
-      const descriptionTemplate = templateId ? document.getElementById(templateId) : null;
-      const description = descriptionTemplate ? descriptionTemplate.innerHTML : img.alt || '';
-
-      if (videoId) {
-        ytVideo.src = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`;
-        ytVideo.style.display = 'block';
-      } else {
-        ytVideo.src = '';
-        ytVideo.style.display = 'none';
-      }
-
-      videoText.innerHTML = description;
-      imageList.style.display = 'none';
-      videoView.style.display = 'flex';
-      currentIndex = index;
-
-      history.pushState({ page: `video-${index}` }, '', `#work/video${index + 1}`);
-    }
-
-    items.forEach((img, index) => {
-      img.addEventListener('click', () => showItemAt(index));
-    });
-
-    backBtn.addEventListener('click', () => {
-      ytVideo.src = '';
-      videoView.style.display = 'none';
-      imageList.style.display = 'flex';
-      currentIndex = -1;
-      history.pushState({ page: 'work-root' }, '', '#work');
-    });
-
-    nextBtn.addEventListener('click', () => {
-      let nextIndex = (currentIndex + 1) % items.length;
-      showItemAt(nextIndex);
-    });
+    setupWorkWindow(content);
   }
+
   win.appendChild(content);
 
   const resizeHandle = document.createElement('div');
@@ -196,124 +134,159 @@ function createWindow(id) {
   win.appendChild(resizeHandle);
   document.body.appendChild(win);
 
-  let width = 600, height = 400, offsetX = 0, offsetY = 0;
-  if (id === 1) { width = 800; height = 500; offsetX = -100; offsetY = -50; }
-  if (id === 2) { width = 500; height = 350; offsetX = 100; offsetY = 50; }
-  if (id === 99) {
-  width = 400;
-  height = 200;
-  offsetX = 0;
-  offsetY = 0;
-}
+  const defaultDims = {
+    1: { width: 800, height: 500, left: 100, top: 100 },
+    2: { width: 500, height: 350, left: 700, top: 200 },
+  }[id] || { width: 600, height: 400, left: 300, top: 200 };
+
+  const { width, height, left, top } = defaultDims;
+
   win.style.width = `${width}px`;
   win.style.height = `${height}px`;
-  win.style.left = `${(window.innerWidth - width) / 2 + offsetX}px`;
-  win.style.top = `${(window.innerHeight - height) / 2 + offsetY}px`;
+  win.style.left = `${left}px`;
+  win.style.top = `${top}px`;
 
-  if (!isMobile()) {
-    let isDragging = false, dragOffsetX = 0, dragOffsetY = 0;
-    titlebar.addEventListener('mousedown', e => {
-      if (e.target.closest('.controls')) return;
-      isDragging = true;
-      const rect = win.getBoundingClientRect();
-      dragOffsetX = e.clientX - rect.left;
-      dragOffsetY = e.clientY - rect.top;
-      win.style.zIndex = ++zIndexCounter;
-    });
-    window.addEventListener('mousemove', e => {
-      if (isDragging) {
-        let x = Math.max(0, Math.min(e.clientX - dragOffsetX, window.innerWidth - win.offsetWidth));
-        let y = Math.max(0, Math.min(e.clientY - dragOffsetY, window.innerHeight - win.offsetHeight));
-        win.style.left = `${x}px`;
-        win.style.top = `${y}px`;
-      }
-    });
-    window.addEventListener('mouseup', () => isDragging = false);
-  }
+  if (!isMobile()) enableDrag(win, titlebar);
+  if (!isMobile()) enableResize(win, resizeHandle);
 
-  if (!isMobile()) {
-    let resizing = false, startX, startY, startWidth, startHeight;
-    resizeHandle.addEventListener('mousedown', e => {
-      e.preventDefault();
-      resizing = true;
-      const rect = win.getBoundingClientRect();
-      startX = e.clientX;
-      startY = e.clientY;
-      startWidth = rect.width;
-      startHeight = rect.height;
-      win.style.zIndex = ++zIndexCounter;
-    });
-    window.addEventListener('mousemove', e => {
-      if (resizing) {
-        win.style.width = `${Math.max(300, startWidth + (e.clientX - startX))}px`;
-        win.style.height = `${Math.max(200, startHeight + (e.clientY - startY))}px`;
-      }
-    });
-    window.addEventListener('mouseup', () => resizing = false);
-  }
-
-  function stopMediaInWindow(id) {
-    const win = windows[id];
-    const content = win?.querySelector('.content');
-    if (!content || id !== 1) return;
-
-    const ytVideo = content.querySelector('#ytVideo');
-    const videoView = content.querySelector('#videoView');
-    const imageList = content.querySelector('#imageList');
-
-    if (ytVideo) ytVideo.src = '';
-    if (videoView) videoView.style.display = 'none';
-    if (imageList) imageList.style.display = 'flex';
-  }
-
-  titlebar.querySelector('.closeBtn').onclick = () => {
-    win.style.display = 'none';
-    stopMediaInWindow(id);
-  };
-  titlebar.querySelector('.minimizeBtn').onclick = () => {
-    win.style.display = 'none';
-    stopMediaInWindow(id);
-  };
+  const stopMedia = () => stopMediaInWindow(id);
+  titlebar.querySelector('.closeBtn').onclick = () => { win.style.display = 'none'; stopMedia(); };
+  titlebar.querySelector('.minimizeBtn').onclick = () => { win.style.display = 'none'; stopMedia(); };
   titlebar.querySelector('.maximizeBtn').onclick = () => win.classList.toggle('maximized');
+
   return win;
 }
 
 function toggleWindow(id) {
-  if (!windows[id]) {
-    windows[id] = createWindow(id);
-  }
+  if (!windows[id]) windows[id] = createWindow(id);
   const win = windows[id];
   const isVisible = win.style.display !== 'none' && win.style.display !== '';
 
-  if (isVisible) {
-    win.style.display = 'none';
-  } else {
-    win.style.display = 'flex';
+  win.style.display = isVisible ? 'none' : 'flex';
+  if (!isVisible) {
     win.style.zIndex = ++zIndexCounter;
     const content = win.querySelector('.content');
-    if (content && id === 1) {
-      const imageList = content.querySelector('#imageList');
-      const videoView = content.querySelector('#videoView');
-      const ytVideo = content.querySelector('#ytVideo');
-      if (imageList && videoView && ytVideo) {
-        imageList.style.display = 'flex';
-        videoView.style.display = 'none';
-        ytVideo.src = '';
-      }
+    if (id === 1 && content) {
+      content.querySelector('#ytVideo').src = '';
+      content.querySelector('#videoView').style.display = 'none';
+      content.querySelector('#imageList').style.display = 'flex';
     }
     if (isMobile()) win.classList.add('maximized');
     else win.classList.remove('maximized');
-    if (content) content.scrollTop = 0;
+    content?.scrollTo(0, 0);
   }
 }
 
-function myFunctionWork() {
-  toggleWindow(1);
+function myFunctionWork() { 
+  toggleWindow(1); 
+  console.log("myFunctionWork triggered");
 }
-function myFunctionAbout() {
+function myFunctionAbout() { 
   toggleWindow(2);
+  console.log("myFunctionAbout triggered");
 }
 
+// === WORK WINDOW SETUP ===
+function setupWorkWindow(content) {
+  const imageList = content.querySelector('#imageList');
+  const videoView = content.querySelector('#videoView');
+  const ytVideo = content.querySelector('#ytVideo');
+  const videoText = content.querySelector('#videoText');
+  const backBtn = content.querySelector('#backBtn');
+  const nextBtn = content.querySelector('#nextBtn');
+  const items = Array.from(imageList.querySelectorAll('img'));
+  let currentIndex = -1;
+
+  function showItemAt(index) {
+    const img = items[index];
+    const videoId = img.dataset.video;
+    const templateId = img.dataset.descriptionTemplate;
+    const descriptionTemplate = templateId ? document.getElementById(templateId) : null;
+    const description = descriptionTemplate ? descriptionTemplate.innerHTML : img.alt || '';
+
+    ytVideo.src = videoId ? `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1` : '';
+    ytVideo.style.display = videoId ? 'block' : 'none';
+    videoText.innerHTML = description;
+
+    imageList.style.display = 'none';
+    videoView.style.display = 'flex';
+    currentIndex = index;
+
+    history.pushState({ page: `video-${index}` }, '', `#work/video${index + 1}`);
+  }
+
+  items.forEach((img, index) => img.addEventListener('click', () => showItemAt(index)));
+  backBtn.addEventListener('click', () => {
+    ytVideo.src = '';
+    videoView.style.display = 'none';
+    imageList.style.display = 'flex';
+    currentIndex = -1;
+    history.pushState({ page: 'work-root' }, '', '#work');
+  });
+  nextBtn.addEventListener('click', () => {
+    const nextIndex = (currentIndex + 1) % items.length;
+    showItemAt(nextIndex);
+  });
+}
+
+// === UTILITY FUNCTIONS ===
+function stopMediaInWindow(id) {
+  if (id !== 1) return;
+  const win = windows[id];
+  const content = win?.querySelector('.content');
+  if (!content) return;
+  content.querySelector('#ytVideo').src = '';
+  content.querySelector('#videoView').style.display = 'none';
+  content.querySelector('#imageList').style.display = 'flex';
+}
+
+function enableDrag(win, titlebar) {
+  let isDragging = false, dragOffsetX = 0, dragOffsetY = 0;
+
+  titlebar.addEventListener('mousedown', e => {
+    if (e.target.closest('.controls')) return;
+    isDragging = true;
+    const rect = win.getBoundingClientRect();
+    dragOffsetX = e.clientX - rect.left;
+    dragOffsetY = e.clientY - rect.top;
+    win.style.zIndex = ++zIndexCounter;
+  });
+
+  window.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    const x = Math.max(0, Math.min(e.clientX - dragOffsetX, window.innerWidth - win.offsetWidth));
+    const y = Math.max(0, Math.min(e.clientY - dragOffsetY, window.innerHeight - win.offsetHeight));
+    win.style.left = `${x}px`;
+    win.style.top = `${y}px`;
+  });
+
+  window.addEventListener('mouseup', () => isDragging = false);
+}
+
+function enableResize(win, handle) {
+  let resizing = false, startX, startY, startWidth, startHeight;
+
+  handle.addEventListener('mousedown', e => {
+    e.preventDefault();
+    resizing = true;
+    const rect = win.getBoundingClientRect();
+    startX = e.clientX;
+    startY = e.clientY;
+    startWidth = rect.width;
+    startHeight = rect.height;
+    win.style.zIndex = ++zIndexCounter;
+  });
+
+  window.addEventListener('mousemove', e => {
+    if (!resizing) return;
+    win.style.width = `${Math.max(300, startWidth + (e.clientX - startX))}px`;
+    win.style.height = `${Math.max(200, startHeight + (e.clientY - startY))}px`;
+  });
+
+  window.addEventListener('mouseup', () => resizing = false);
+}
+
+// === ADAPTIVE WINDOW BEHAVIOR ON RESIZE ===
 window.addEventListener('resize', () => {
   Object.values(windows).forEach(win => {
     if (isMobile()) {

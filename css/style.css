@@ -15,7 +15,7 @@
   --darkbrown: #7a6f58;
   --accent: #a0ba70;
   --darkgreen: #749251;
-  --verydarkgreen: #2d302b;
+  --verydarkgreen: #30322e;
   --white: #ffffe2;
   --yellow: #bc9760;
 
@@ -233,6 +233,7 @@ body {
   line-height: 1.3;
   text-align: right;
   font-size: clamp(1.5rem, 8vw, 5rem);
+  letter-spacing: 0.02em;
   font-weight: bold;
   padding: 0;
   margin: 0;
@@ -244,7 +245,7 @@ body {
 ====================== */
 .scroll-hint {
   position: absolute;
-  bottom: 0.5vh;
+  bottom: 0.3vh;
   /* Responsive vertical space */
   left: 50%;
   transform: translateX(-50%);
