@@ -37,8 +37,16 @@ function myFunctionStart() {
   }
   isVisible = !isVisible;
 }
+ 
+window.addEventListener("load", () => {
+  firstBox.classList.add("fade-in");
+  secondBox.classList.add("hidden");
+});
 
+
+// === warning wheelpc  ===
 function myFunctionPC() {
+  // Hide first and second page
   [firstBox, secondBox].forEach(box => {
     box.classList.remove("fade-in");
     box.classList.add("fade-out");
@@ -46,36 +54,27 @@ function myFunctionPC() {
       box.classList.add("hidden");
     }, 500);
   });
+
+  // Hide all open windows
   Object.values(windows).forEach(win => {
     win.style.display = 'none';
   });
   isVisible = false;
-}
 
-window.addEventListener("load", () => {
-  firstBox.classList.add("fade-in");
-  secondBox.classList.add("hidden");
-});
-
-// === HISTORY HANDLER ===
-window.addEventListener('popstate', () => {
-  const hash = location.hash;
-  if (hash.startsWith('#work/video')) {
-    const index = parseInt(hash.split('video')[1]) - 1;
-    if (!isNaN(index)) {
-      toggleWindow(1);
-      const workWin = windows[1];
-      if (workWin) {
-        const items = Array.from(workWin.querySelectorAll('#imageList img'));
-        if (items[index]) items[index].click();
-      }
-    }
-  } else if (hash === '#work') {
-    toggleWindow(1);
-  } else if (hash === '#about') {
-    toggleWindow(2);
+  // ////////////////////Create and show a warning window using ID 99
+  const id = 99;
+  if (!windows[id]) {
+    const warningWin = createWindow(id);
+    // Customize content and title
+    const title = warningWin.querySelector('.title');
+    if (title) title.textContent = 'WARNING';
+    const content = warningWin.querySelector('.content');
+    if (content) content.innerHTML = `<p style="padding: 1em;">This action resets the interface. Proceed with caution.</p>`;
   }
-});
+
+  windows[id].style.display = 'flex';
+  windows[id].style.zIndex = ++zIndexCounter;
+}
 
 // === CABLES.GL PATCH INIT ===
 function showError(initiator, ...args) {
@@ -130,6 +129,7 @@ function createWindow(id) {
   const titlebarTemplate = document.querySelector('#titlebar-template');
   const titlebarContent = titlebarTemplate.content.cloneNode(true);
   titlebarContent.querySelector('.title').textContent = windowTitle;
+  
   titlebar.appendChild(titlebarContent);
   win.appendChild(titlebar);
 
@@ -199,7 +199,12 @@ function createWindow(id) {
   let width = 600, height = 400, offsetX = 0, offsetY = 0;
   if (id === 1) { width = 800; height = 500; offsetX = -100; offsetY = -50; }
   if (id === 2) { width = 500; height = 350; offsetX = 100; offsetY = 50; }
-
+  if (id === 99) {
+  width = 400;
+  height = 200;
+  offsetX = 0;
+  offsetY = 0;
+}
   win.style.width = `${width}px`;
   win.style.height = `${height}px`;
   win.style.left = `${(window.innerWidth - width) / 2 + offsetX}px`;
@@ -303,11 +308,9 @@ function toggleWindow(id) {
 }
 
 function myFunctionWork() {
-  location.hash = 'work';
   toggleWindow(1);
 }
 function myFunctionAbout() {
-  location.hash = 'about';
   toggleWindow(2);
 }
 

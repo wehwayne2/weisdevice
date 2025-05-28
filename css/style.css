@@ -17,7 +17,7 @@
   --darkgreen: #749251;
   --verydarkgreen: #2d302b;
   --white: #ffffe2;
-  --yellow: #fdf7a7;
+  --yellow: #bc9760;
 
   --dot-size: 1.5px;
   --dot-spacing-x: 8px;
@@ -126,7 +126,7 @@ body {
    Footer
 ====================== */
 
-.footer {
+.desktop-footer {
   position: fixed;
   bottom: 1rem;
   right: 1rem;
@@ -141,16 +141,24 @@ body {
   min-width: 200px;
 }
 
-.footer a {
+.desktop-footer a {
   color: inherit;
   text-decoration: none;
   padding-left: 30px;
 }
 
-.footer a:hover {
+.desktop-footer a:hover {
   text-decoration: underline;
 }
 
+@media (max-width: 768px) {
+  .desktop-footer {
+    display: none;
+  }
+  .mobile-footer {
+    display: block;
+  }
+}
 
 /* ======================
    SAY HI BOX
@@ -164,7 +172,7 @@ body {
   z-index: 999;
   width: 90%;
   height: auto;
-  font-family: var(--heading-font);
+  
   padding: 20px;
   margin: 0 auto;
   opacity: 1;
@@ -219,6 +227,7 @@ body {
   width: auto;
   max-width: 90%;
   color: var(--verydarkgreen);
+  font-family: var(--heading-font);
   opacity: 0.8;
 
   line-height: 1.3;
@@ -252,7 +261,7 @@ body {
 .guide-text {
   position: fixed;
 
-  bottom: 1rem;
+  bottom: 0.4rem;
   /* Responsive vertical space */
   text-align: center;
   font-size: clamp(1rem, 4vw, 1.7rem);
@@ -270,7 +279,7 @@ body {
 
   0%,
   100% {
-    opacity: 0.7;
+    opacity: 0.2;
   }
 
   50% {
