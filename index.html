@@ -1,17 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="/wei-logo.jpg">
-  <link rel="stylesheet" href="/css/style.css">
-
   <title>Weisdevice</title>
   <meta name="description" content="Xianyao Wei's portfolio - interaction design and creative coding projects.">
-</head>
-  <h>rebuilding everything...</h>
 
- 
+  <link rel="icon" type="image/png" href="/media/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/media/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/media/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/media/favicon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Weisdevice" />
+  <link rel="manifest" href="/media/favicon/site.webmanifest" />
+
+  <meta name="language" content="English" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/media/og-image.webp" />
+
+  <script type="module" crossorigin src="/assets/index-D9az9Yl0.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DXiSh9pV.css">
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <div class="work modal hidden">
+    <div class="titlebar">
+      <h1 class="modal-title">Work</h1>
+      <button class="modal-exit-button" aria-label="Close">&times;</button>
+    </div>
+
+    <div class="modal-content image-list">
+      <div class="image-list-inner">
+
+         <div class="image-item">
+        <img src="/images/interphysis-thumbnail.webp" alt="Project 1">
+        <div class="infobar">
+          <span class="keyword">Wireless Game Module</span>
+          <span class="title">Interphysis</span>
+          <span class="year">2024</span>
+        </div>
+          <button class="more-button">More</button>
+      </div>
+
+      <div class="image-item">
+        <img src="/images/anglerfish-thumbnail.webp" alt="Project 2">
+        <div class="infobar">
+          <span class="keyword">Realtime AI Installtion</span>
+          <span class="title">Anglerfish</span>
+          <span class="year">2024</span>
+        </div>
+          <button class="more-button">More</button>
+      </div>
+
+      <div class="image-item">
+        <img src="/images/dna-thumbnail.webp" alt="Project 3">
+        <div class="infobar">
+          <span class="keyword">Web-based Interaction</span>
+          <span class="title">DNA</span>
+          <span class="year">2024</span>
+        </div>
+          <button class="more-button">More</button>
+      </div>
+
+      <div class="image-item">
+        <img src="/images/boxman-thumbnail.webp" alt="Project 4">
+        <div class="infobar">
+          <span class="keyword">Chatbot Interface</span>
+          <span class="title">Boxman</span>
+          <span class="year">2023</span>
+        </div>
+          <button class="more-button">More</button>
+      </div>
+
+      <div class="image-item">
+        <img src="/images/futurehuman-thumbnail.webp" alt="Project 5">
+        <div class="infobar">
+          <span class="keyword">Illustration</span>
+          <span class="title">Future Human</span>
+          <span class="year">2022</span>
+        </div>
+          <button class="more-button">More</button>
+      </div>
+    </div>
+  </div>
+      </div>
+     
+
+  <div class="about modal hidden">
+    <h1 class="modal-title">About</h1>
+    <button class="modal-exit-button" aria-label="Close">&times;</button>
+  </div>
+
+  <div class="contact modal hidden">
+    <h1 class="modal-title">Content</h1>
+    <button class="modal-exit-button" aria-label="Close">&times;</button>
+  </div>
+
+  <div class="legal modal hidden">
+    <h1 class="modal-title">Legal</h1>
+    <button class="modal-exit-button" aria-label="Close">&times;</button>
+  </div>
+
+
+  <div id="experience">
+    <canvas id="experience-canvas" class="experience-canvas"></canvas>
+  </div>
+</body>
 
 </html>
