@@ -19,110 +19,269 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/media/og-image.webp" />
 
-  <script type="module" crossorigin src="/assets/index-D9az9Yl0.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-DXiSh9pV.css">
+  <script type="module" crossorigin src="/assets/index-tnQlRJDx.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CpWHjJqQ.css">
 </head>
 
 <body>
   <div id="app"></div>
 
-  <div style="
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: yellow;
-  padding: 12px 20px;
-  border: 1px solid black;
-  z-index: 999;
-  font-family: sans-serif;
-  font-size: 14px;
-  max-width: 90%;
-  text-align: center;
-">
-  ⚠️ Warning: Please do not use this app! It is still under development.  
-  There is currently no privacy policy or credits information available.  
-  — Xianyao Wei, 14:23, June 3, 2025
+  <div id="loading-screen">
+  <div class="loading-box">
+    <p id="loading-text">Loading...</p>
+    <progress id="progress-bar" value="0" max="100"></progress>
+    <button id="enter-button" disabled>Enter</button>
+  </div>
 </div>
-  
-  <div class="work modal hidden">
+
+  <audio id="bg-music" loop>
+  <source src="/audio/frankum__vintage-elecro-pop-loop.ogg" type="audio/mpeg">
+</audio>
+<button id="music-toggle">
+  <img id="music-icon" src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20height='48px'%20viewBox='0%20-960%20960%20960'%20width='48px'%20fill='%233b3935'%3e%3cpath%20d='m794.5-53.5-740-740L104-843l740%20740-49.5%2049.5ZM562-481.5%20470.5-573v-291h282v166H562v216.5ZM398-97q-69%200-116.5-47.5T234-261q0-69%2047.5-116.5T398-425q23%200%2041.5%205.5t31%2016v-73L562-385v124q0%2068.5-47.75%20116.25T398-97Z'/%3e%3c/svg%3e" width="24" height="24" alt="music">
+</button>
+
+  <section class="work modal hidden">
+
     <div class="titlebar">
       <h1 class="modal-title">Work</h1>
       <button class="modal-exit-button" aria-label="Close">&times;</button>
     </div>
+    <div class="filepath-bar">
+      <span class="path">C:\WINNT\SYSTEM32\Weisdevice\Work</span>
+      <div class="status-indicators">
+        <span>View: Thumbnails</span>
+        <span>Size: Auto</span>
+        <span>Read-only</span>
+      </div>
+    </div>
 
     <div class="modal-content image-list">
       <div class="image-list-inner">
-
-         <div class="image-item">
-        <img src="/images/interphysis-thumbnail.webp" alt="Project 1">
-        <div class="infobar">
-          <span class="keyword">Wireless Game Module</span>
-          <span class="title">Interphysis</span>
-          <span class="year">2024</span>
+        <div class="image-item">
+          <div class="infobar">
+            <img src="/images/interphysis-thumbnail.webp" alt="interphysis-thumbnail">
+            <div class="infobar-content">
+              <div class="title">Interphysis</div>
+              <span class="keyword">Wireless Game Module</span>
+              <span class="year">2024</span>
+            </div>
+            <a class="more-button" href="interphysis.html">More</a>
+          </div>
         </div>
-          <button class="more-button">More</button>
-      </div>
 
-      <div class="image-item">
-        <img src="/images/anglerfish-thumbnail.webp" alt="Project 2">
-        <div class="infobar">
-          <span class="keyword">Realtime AI Installtion</span>
-          <span class="title">Anglerfish</span>
-          <span class="year">2024</span>
+        <div class="image-item">
+          <div class="infobar">
+            <img src="/images/anglerfish-thumbnail.webp" alt="anglerfish-thumbnail">
+            <div class="infobar-content">
+              <div class="title">Anglerfish</div>
+              <span class="keyword">Realtime AI Installtion</span>
+              <span class="year">2024</span>
+            </div>
+            <a class="more-button" href="anglerfish.html">More</a>
+          </div>
         </div>
-          <button class="more-button">More</button>
-      </div>
 
-      <div class="image-item">
-        <img src="/images/dna-thumbnail.webp" alt="Project 3">
-        <div class="infobar">
-          <span class="keyword">Web-based Interaction</span>
-          <span class="title">DNA</span>
-          <span class="year">2024</span>
+        <div class="image-item">
+          <div class="infobar">
+            <img src="/images/dna-thumbnail.webp" alt="dna-thumbnail">
+            <div class="infobar-content">
+              <div class="title">DNA</div>
+              <span class="keyword">Web-based Interaction</span>
+              <span class="year">2024</span>
+            </div>
+            <a class="more-button" href="dna.html">More</a>
+          </div>
         </div>
-          <button class="more-button">More</button>
-      </div>
 
-      <div class="image-item">
-        <img src="/images/boxman-thumbnail.webp" alt="Project 4">
-        <div class="infobar">
-          <span class="keyword">Chatbot Interface</span>
-          <span class="title">Boxman</span>
-          <span class="year">2023</span>
+        <div class="image-item">
+          <div class="infobar">
+            <img src="/images/boxman-thumbnail.webp" alt="boxman-thumbnail">
+            <div class="infobar-content">
+              <div class="title">Boxman</div>
+              <span class="keyword">Chatbot Interface</span>
+              <span class="year">2023</span>
+            </div>
+            <a class="more-button" href="boxman.html">More</a>
+          </div>
         </div>
-          <button class="more-button">More</button>
-      </div>
 
-      <div class="image-item">
-        <img src="/images/futurehuman-thumbnail.webp" alt="Project 5">
-        <div class="infobar">
-          <span class="keyword">Illustration</span>
-          <span class="title">Future Human</span>
-          <span class="year">2022</span>
+        <div class="image-item">
+          <div class="infobar">
+            <img src="/images/futurehuman-thumbnail.webp" alt="futurehuman-thumbnail">
+            <div class="infobar-content">
+              <div class="title">Future Human</div>
+              <span class="keyword">Illustration</span>
+              <span class="year">2022</span>
+            </div>
+            <a class="more-button" href="futurehuman.html">More</a>
+          </div>
         </div>
-          <button class="more-button">More</button>
       </div>
     </div>
-  </div>
+  </section>
+
+
+  <section class="about modal hidden">
+    <div class="titlebar">
+      <h1 class="modal-title">About</h1>
+      <button class="modal-exit-button" aria-label="Close">&times;</button>
+    </div>
+    <div class="filepath-bar">
+      <span class="path">C:\WINNT\SYSTEM32\Weisdevice\About</span>
+      <div class="status-indicators">
+        <span>Size: Auto</span>
+        <span>Read-only</span>
       </div>
-     
+    </div>
+    <div class="modal-content">
+      <div class="infobar">
+        <img src="/media/favicon/web-app-manifest-192x192.png" alt="Portrait of me" class="about-me-image" />
+        <div class="about-me-text">
+          <h1 class="title">About Me</h1>
+          <hr />
+          <p>
+            I’m currently studying Design (Master’s) in Germany.
+            I enjoy exploring how technology can create playful, interactive experiences — and learning and experimenting
+            are things that genuinely make me happy.
+          </p>
+          <hr />
+          <hr />
+          <h1 class="title">Tools</h1>
+          <hr />
+          <p>
+            Right now, I’m exploring <span class="highlight rotate1">Three.js</span> and real-time 3D on the web.
+          </p>
+          <p>
+            My creative toolkit includes:
+            <span class="highlight rotate2">TouchDesigner</span>,
+            <span class="highlight rotate3">Unity</span>,
+            <span class="highlight rotate1">Arduino</span>,
+            <span class="highlight rotate3">Cables.gl</span>, and
+            <span class="highlight rotate2">Blender</span>.
+          </p>
+          <hr />
+        </div>
+      </div>
+    </div>
 
-  <div class="about modal hidden">
-    <h1 class="modal-title">About</h1>
-    <button class="modal-exit-button" aria-label="Close">&times;</button>
-  </div>
+  </section>
 
-  <div class="contact modal hidden">
-    <h1 class="modal-title">Content</h1>
-    <button class="modal-exit-button" aria-label="Close">&times;</button>
-  </div>
 
-  <div class="legal modal hidden">
-    <h1 class="modal-title">Legal</h1>
-    <button class="modal-exit-button" aria-label="Close">&times;</button>
-  </div>
+  <section class="contact modal hidden">
+    <div class="titlebar">
+      <h1 class="modal-title">Contact</h1>
+      <button class="modal-exit-button" aria-label="Close">&times;</button>
+    </div>
+    <div class="filepath-bar">
+      <span class="path">C:\WINNT\SYSTEM32\Weisdevice\Contact</span>
+      <div class="status-indicators">
+        <span>Size: Auto</span>
+        <span>Read-only</span>
+      </div>
+    </div>
+    <div class="modal-content">
 
+      <div class="infobar">
+        <div class="title">
+          Feel free to contact me :) <br> I’d be really happy to hear from you anytime!
+        </div>
+        <a class="more-button" href="mailto:xianyao.wei.de@gmail.com">Contact Me</a>
+      </div>
+
+    </div>
+    
+  </section>
+
+  <section class="legal modal hidden">
+    <div class="titlebar">
+      <div class="modal-title">Legal</div>
+      <button class="modal-exit-button" aria-label="Close">&times;</button>
+    </div>
+    <div class="filepath-bar">
+      <span class="path">C:\WINNT\SYSTEM32\Weisdevice\Legal</span>
+      <div class="status-indicators">
+        <span>Size: Auto</span>
+        <span>Read-only</span>
+      </div>
+    </div>
+
+    <div class="modal-content">
+      <h1>Credits</h1>
+      <hr />
+      <p>Thanks to the talented creators on Sketchfab for their amazing assets (licensed under CC Attribution) featured
+        on this website:</p>
+      <ul>
+        <li>FuneralClown – 8-Bit DJ</li>
+        <li>Vanya Dzhus – Desert Road</li>
+        <li>Eh – 90’s Stuff</li>
+        <li>Yana Melnyk – Food Pack</li>
+      </ul>
+      <hr />
+      <p>Extra thanks for the inspiration: Andrew Woan – Sooah’s Room</p>
+      <hr />
+     <p>Background music: “Vintage Electro Pop Loop” by frankum (Attribution 4.0, Freesound.org).</p>
+      <hr />
+      <hr />
+      <hr />
+      <hr />
+      <h1>Privacy Policy</h1>
+      <hr />
+      <p>I take the protection of your personal data very seriously. This privacy policy explains how your data is
+        handled when you visit my website.</p>
+      <hr />
+      <p>1. Responsible Person: Xianyao Wei, Email: <a
+          href="mailto:xianyao.wei.de@gmail.com">xianyao.wei.de@gmail.com</a>. This website is a personal portfolio
+        hosted on GitHub Pages.</p>
+      <hr />
+      <p>2. Hosting: This website is hosted by GitHub Pages, a service provided by GitHub Inc., 88 Colin P. Kelly Jr.
+        Street, San Francisco, CA 94107, USA. When you visit the site, GitHub may collect standard server log data such
+        as your IP address, browser type, and access times. For more information, please see GitHub’s privacy statement:
+        <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement"
+          target="_blank">https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement</a>
+      </p>
+      <hr />
+      <p>3. No Cookies: This website does not use cookies or any local storage technologies.</p>
+      <hr />
+      <p>4. Contact via Email: If you contact me via an email link (mailto:), your message, email address, and any
+        included personal data will be used solely to respond to your inquiry. This information is not shared with third
+        parties.</p>
+      <hr />
+      <p>5. Third-Party Content and Links: This website includes content and links from third-party platforms: YouTube
+        (Google LLC) – Embedded videos may collect data such as your IP address and cookies, in accordance with
+        YouTube’s own policies. More info: <a href="https://policies.google.com/privacy"
+          target="_blank">https://policies.google.com/privacy</a>. Cables.gl (by undev studio) – This website includes
+        one external link (from the project DNA) that may take you to the Cables.gl platform. More info: <a
+          href="https://cables.gl/docs/docs" target="_blank">https://cables.gl/docs/docs</a>. When interacting with
+        these services or external links, it is as if you are visiting those platforms directly, and their privacy
+        policies apply.</p>
+      <hr />
+      <p>6. Your Rights: This website does not directly collect or store personal data. It does not use cookies,
+        analytics tools, or local storage. However, I use Google Search Console to monitor site performance and
+        visibility in search engines. While I do not have access to personally identifiable data, Google may collect
+        anonymized technical data (such as IP address or device type) as part of their service. For details, see
+        Google’s privacy policy: <a href="https://policies.google.com/privacy"
+          target="_blank">https://policies.google.com/privacy</a>. If you contact me via email, your message and address
+        will be used solely to respond to your inquiry. You may request deletion of any such communication by contacting
+        me directly.</p>
+      <hr />
+      <p>7. Data Security: This website uses HTTPS encryption to protect data during transmission.</p>
+      <hr />
+      <p>8. Consent: By browsing this site, you agree to the terms of this privacy policy and disclaimer.</p>
+      <hr />
+      <p>9. Updates: If this privacy policy is revised in the future, any changes will be clearly noted on this page.
+      </p>
+      <hr>
+      <p> Last updated: June 4, 2025.</p>
+    </div>
+  </section>
+
+  <svg style="display: none;">
+    <filter id="wobble">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="turbulence"/>
+      <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="2"/>
+    </filter>
+  </svg>
 
   <div id="experience">
     <canvas id="experience-canvas" class="experience-canvas"></canvas>
