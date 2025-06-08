@@ -19,18 +19,48 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/media/og-image.webp" />
 
-  <script type="module" crossorigin src="/assets/index-tnQlRJDx.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-CpWHjJqQ.css">
+  <script type="module" crossorigin src="/assets/main-DhyVIe8d.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor-LxNUTRMv.js">
+  <link rel="stylesheet" crossorigin href="/assets/style-BbU24Z3n.css">
 </head>
 
 <body>
   <div id="app"></div>
 
-  <div id="loading-screen">
-  <div class="loading-box">
-    <p id="loading-text">Loading...</p>
-    <progress id="progress-bar" value="0" max="100"></progress>
-    <button id="enter-button" disabled>Enter</button>
+<div id="loading-screen">
+
+  <div class="modal ">
+    <div class="titlebar">
+      <span class="modal-title">Loading — Windows NT</span>
+    </div>
+
+    <div class="filepath-bar">
+      <div class="path">C:\WINNT\SYSTEM32\Weisdevice\boot.exe</div>
+      <div class="status-indicators">
+        <span>Disk 1</span><span>Initializing</span><span>OK</span>
+      </div>
+    </div>
+
+    <div class="modal-content loading-content">
+
+        <span id="loading-text" class="rotate3"></span>
+
+        <div class="icon-fly-container">
+          <img src="/icon/open-file-folder.svg" class="icon data-icon" />
+          <img src="/icon/paper-plane.svg" class="icon folder-icon" />
+           <img src="/icon/globe-showing-europe-africa.svg" class="icon globe-icon" />
+        </div>
+
+        <progress id="progress-bar" value="0" max="100"></progress>
+
+        <span id="tip-text">💡 Tip: Explore using mouse or touch.</span>
+ 
+
+      <div class="nt-buttons">
+        <button class="nt-button rotate1" disabled>Back</button>
+        <button class="nt-button" id="enter-button">Continue</button>
+      </div>
+    </div>
   </div>
 </div>
 
