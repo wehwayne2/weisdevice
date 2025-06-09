@@ -19,57 +19,56 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/media/og-image.webp" />
 
-  <script type="module" crossorigin src="/assets/main-DhyVIe8d.js"></script>
+  <script type="module" crossorigin src="/assets/main-C4U23k7D.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/vendor-LxNUTRMv.js">
-  <link rel="stylesheet" crossorigin href="/assets/style-BbU24Z3n.css">
+  <link rel="stylesheet" crossorigin href="/assets/style-C_8r5dWV.css">
 </head>
 
 <body>
   <div id="app"></div>
 
-<div id="loading-screen">
+  <div id="loading-screen">
 
-  <div class="modal ">
-    <div class="titlebar">
-      <span class="modal-title">Loading — Windows NT</span>
-    </div>
-
-    <div class="filepath-bar">
-      <div class="path">C:\WINNT\SYSTEM32\Weisdevice\boot.exe</div>
-      <div class="status-indicators">
-        <span>Disk 1</span><span>Initializing</span><span>OK</span>
+    <div class="modal ">
+      <div class="titlebar">
+        <div id="loading-text" class="modal-title"></div>
       </div>
-    </div>
 
-    <div class="modal-content loading-content">
+      <div class="filepath-bar">
+        <div class="path">C:\WINNT\SYSTEM32\Weisdevice\boot.exe</div>
+        <div class="status-indicators">
+          <span>Disk 1</span><span>Initializing</span><span>OK</span>
+        </div>
+      </div>
 
-        <span id="loading-text" class="rotate3"></span>
+      <div class="modal-content loading-content">
 
         <div class="icon-fly-container">
           <img src="/icon/open-file-folder.svg" class="icon data-icon" />
           <img src="/icon/paper-plane.svg" class="icon folder-icon" />
-           <img src="/icon/globe-showing-europe-africa.svg" class="icon globe-icon" />
+          <img src="/icon/globe-showing-europe-africa.svg" class="icon globe-icon" />
         </div>
 
         <progress id="progress-bar" value="0" max="100"></progress>
 
         <span id="tip-text">💡 Tip: Explore using mouse or touch.</span>
- 
 
-      <div class="nt-buttons">
-        <button class="nt-button rotate1" disabled>Back</button>
-        <button class="nt-button" id="enter-button">Continue</button>
+
+        <div class="nt-buttons">
+          <button class="nt-button rotate1" disabled>Back</button>
+          <button class="nt-button" id="enter-button">Continue</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
   <audio id="bg-music" loop>
-  <source src="/audio/frankum__vintage-elecro-pop-loop.ogg" type="audio/mpeg">
-</audio>
-<button id="music-toggle">
-  <img id="music-icon" src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20height='48px'%20viewBox='0%20-960%20960%20960'%20width='48px'%20fill='%233b3935'%3e%3cpath%20d='m794.5-53.5-740-740L104-843l740%20740-49.5%2049.5ZM562-481.5%20470.5-573v-291h282v166H562v216.5ZM398-97q-69%200-116.5-47.5T234-261q0-69%2047.5-116.5T398-425q23%200%2041.5%205.5t31%2016v-73L562-385v124q0%2068.5-47.75%20116.25T398-97Z'/%3e%3c/svg%3e" width="24" height="24" alt="music">
-</button>
+    <source src="/audio/frankum__vintage-elecro-pop-loop.ogg" type="audio/mpeg">
+  </audio>
+  <button id="music-toggle">
+    <img id="music-icon" src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20height='48px'%20viewBox='0%20-960%20960%20960'%20width='48px'%20fill='%233b3935'%3e%3cpath%20d='m794.5-53.5-740-740L104-843l740%20740-49.5%2049.5ZM562-481.5%20470.5-573v-291h282v166H562v216.5ZM398-97q-69%200-116.5-47.5T234-261q0-69%2047.5-116.5T398-425q23%200%2041.5%205.5t31%2016v-73L562-385v124q0%2068.5-47.75%20116.25T398-97Z'/%3e%3c/svg%3e" width="24"
+      height="24" alt="music">
+  </button>
 
   <section class="work modal hidden">
 
@@ -172,7 +171,8 @@
           <hr />
           <p>
             I’m currently studying Design (Master’s) in Germany.
-            I enjoy exploring how technology can create playful, interactive experiences — and learning and experimenting
+            I enjoy exploring how technology can create playful, interactive experiences — and learning and
+            experimenting
             are things that genuinely make me happy.
           </p>
           <hr />
@@ -220,7 +220,7 @@
       </div>
 
     </div>
-    
+
   </section>
 
   <section class="legal modal hidden">
@@ -250,7 +250,7 @@
       <hr />
       <p>Extra thanks for the inspiration: Andrew Woan – Sooah’s Room</p>
       <hr />
-     <p>Background music: “Vintage Electro Pop Loop” by frankum (Attribution 4.0, Freesound.org).</p>
+      <p>Background music: “Vintage Electro Pop Loop” by frankum (Attribution 4.0, Freesound.org).</p>
       <hr />
       <hr />
       <hr />
@@ -308,8 +308,8 @@
 
   <svg style="display: none;">
     <filter id="wobble">
-      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="turbulence"/>
-      <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="2"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="turbulence" />
+      <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="2" />
     </filter>
   </svg>
 
