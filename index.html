@@ -19,71 +19,70 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/media/og-image.webp" />
 
-  <script type="module" crossorigin src="/assets/vendor-xVeN9iEI.js"></script>
-  <script type="module" crossorigin src="/assets/main-CycqZkhh.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main-7ncisVac.css">
+  <script type="module" crossorigin src="/assets/main-C-WY7AFq.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor-xVeN9iEI.js">
+  <link rel="stylesheet" crossorigin href="/assets/main-okcKJIIZ.css">
 </head>
 
 <body>
   <div id="app"></div>
 
-
   <div class="loading-screen-container">
-  <div id="loading-screen">
+    <div id="loading-screen">
 
-    <div class="modal ">
-      <div class="titlebar">
-        <div id="loading-text" class="modal-title"></div>
-      </div>
-
-      <div class="filepath-bar">
-        <div class="path">C:\WINNT\SYSTEM32\Weisdevice\boot.exe</div>
-        <div class="status-indicators">
-          <span>Disk 1</span><span>Initializing</span><span>OK</span>
-        </div>
-      </div>
-
-      <div class="modal-content loading-content">
-
-        <div class="icon-fly-container">
-          <img src="/icon/open-file-folder.svg" class="icon data-icon" />
-          <img src="/icon/paper-plane.svg" class="icon folder-icon" />
-          <img src="/icon/globe-showing-europe-africa.svg" class="icon globe-icon" />
+      <div class="modal ">
+        <div class="titlebar">
+          <div id="loading-text" class="modal-title"></div>
         </div>
 
-        <progress id="progress-bar" value="0" max="100"></progress>
+        <div class="filepath-bar">
+          <div class="path">C:\WINNT\SYSTEM32\Weisdevice\boot.exe</div>
+          <div class="status-indicators">
+            <span>Disk 1</span><span>Initializing</span><span>OK</span>
+          </div>
+        </div>
 
-        <span id="tip-text">💡 Tip: Explore using mouse or touch.</span>
+        <div class="modal-content loading-content">
 
+          <div class="icon-fly-container">
+            <img src="/icon/open-file-folder.svg" class="icon data-icon" />
+            <img src="/icon/paper-plane.svg" class="icon folder-icon" />
+            <img src="/icon/globe-showing-europe-africa.svg" class="icon globe-icon" />
+          </div>
 
-        <div class="nt-buttons">
-          <button class="nt-button rotate1" id="enter-button-mute" disabled>Enter (No Music)</button>
-          <button class="nt-button" id="enter-button" disabled>Enter</button>
+          <progress id="progress-bar" value="0" max="100"></progress>
+
+          <span id="tip-text">💡 Tip: Explore using mouse or touch.</span>
+
+          <div class="nt-buttons">
+            <button class="nt-button-mute rotate1" id="enter-button-mute" disabled>Enter (No Music)</button>
+            <button class="nt-button" id="enter-button" disabled>Enter</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
 
+  <div class="overlay"></div>
 
-
- <audio id="bg-music" loop>
-    <source src="./audio/frankum__vintage-elecro-pop-loop.ogg" type="audio/mpeg">
+  <audio id="bg-music" loop>
+    <source src="/audio/falselyclaimed-bit-beats-3-168873.ogg" type="audio/mpeg">
   </audio>
+
   <button id="music-toggle">
-    <img id="music-icon" src="/icon/music_off_124dp_3B3935_FILL0_wght700_GRAD-25_opsz48.svg" width="24"
-      height="24" alt="music">
+    <img id="music-icon" src="/icon/music_off_124dp_3B3935_FILL0_wght700_GRAD-25_opsz48.svg" width="24" height="24"
+      alt="music">
   </button>
 
-
   <button id="theme-toggle">
-   <img id="theme-icon" src="/icon/light_mode_124dp_3B3935_FILL0_wght700_GRAD200_opsz48.svg" width="24"
-      height="24" alt="theme-mode">
-</button>
+    <img id="theme-icon" src="/icon/light_mode_124dp_3B3935_FILL0_wght700_GRAD200_opsz48.svg" width="24" height="24"
+      alt="theme-mode">
+  </button>
 
-
- 
-
+  <button id="camera-toggle">
+    <img id="camera-icon" src="/icon/chevron_right_124dp_3B3935_FILL0_wght700_GRAD200_opsz48.svg" width="24" height="24"
+      alt="theme-mode">
+  </button>
 
   <section class="work modal hidden">
 
@@ -184,16 +183,18 @@
         <div class="about-me-text">
           <h1 class="title">About Me</h1>
           <hr />
+          <p> Call me Wei — like V in Cyberpunk 2077. Or Xianyao, if you prefer.</p>
+          <hr>
           <p>
             I’m currently studying Design (Master’s) in Germany.
             I enjoy exploring how technology can create playful, interactive experiences — and learning and
             experimenting
             are things that genuinely make me happy.
           </p>
-          <hr />
-          <hr />
+          <hr>
+          <hr>
           <h1 class="title">Tools</h1>
-          <hr />
+          <hr>
           <p>
             Right now, I’m exploring <span class="highlight rotate1">Three.js</span> and real-time 3D on the web.
           </p>
@@ -232,6 +233,20 @@
           Feel free to contact me :) <br> I’d be really happy to hear from you anytime!
         </div>
         <a class="more-button" href="mailto:xianyao.wei.de@gmail.com">Contact Me</a>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/xianyao-wei-879ba9332/" class="social-button rotate1" target="_blank"
+            rel="noopener" aria-label="LinkedIn">
+            <img src="/icon/linkedin-svgrepo-com.svg" alt="GitHub" />
+          </a>
+          <a href="https://www.instagram.com/unofficial_username.001/" class="social-button rotate3" target="_blank"
+            rel="noopener" aria-label="Instagram">
+            <img src="/icon/ins-svgrepo-com.svg" alt="Instagram" />
+          </a>
+          <a href="https://github.com/wehwayne2" class="social-button rotate2" target="_blank" rel="noopener"
+            aria-label="Github">
+            <img src="/icon/github-square-svgrepo-com.svg" alt="Github" />
+          </a>
+        </div>
       </div>
 
     </div>
@@ -254,6 +269,9 @@
     <div class="modal-content">
       <h1>Credits</h1>
       <hr />
+      <p>Extra thanks for the inspiration: <a href="https://www.youtube.com/@andrewwoan" target="_blank" rel="noopener noreferrer">Andrew Woan</a> – Sooah’s Room
+      </p>
+      <hr>
       <p>Thanks to the talented creators on Sketchfab for their amazing assets (licensed under CC Attribution) featured
         on this website:</p>
       <ul>
@@ -262,36 +280,39 @@
         <li>Eh – 90’s Stuff</li>
         <li>Yana Melnyk – Food Pack</li>
       </ul>
-      <hr />
-      <p>Extra thanks for the inspiration: Andrew Woan – Sooah’s Room</p>
-      <hr />
-      <p>Background music: “Vintage Electro Pop Loop” by frankum (Attribution 4.0, Freesound.org).</p>
-      <hr />
-      <hr />
-      <hr />
-      <hr />
+      <hr>
+      <p>
+        Background music: “Bit Beats 3” by
+        <a href="https://pixabay.com/users/xtremefreddy-32332307/" target="_blank" rel="noopener noreferrer">
+          XtremeFreddy
+        </a>.
+      </p>
+      <hr>
+      <hr>
+      <hr>
+      <hr>
       <h1>Privacy Policy</h1>
-      <hr />
+      <hr>
       <p>I take the protection of your personal data very seriously. This privacy policy explains how your data is
         handled when you visit my website.</p>
-      <hr />
+      <hr>
       <p>1. Responsible Person: Xianyao Wei, Email: <a
           href="mailto:xianyao.wei.de@gmail.com">xianyao.wei.de@gmail.com</a>. This website is a personal portfolio
         hosted on GitHub Pages.</p>
-      <hr />
+      <hr>
       <p>2. Hosting: This website is hosted by GitHub Pages, a service provided by GitHub Inc., 88 Colin P. Kelly Jr.
         Street, San Francisco, CA 94107, USA. When you visit the site, GitHub may collect standard server log data such
         as your IP address, browser type, and access times. For more information, please see GitHub’s privacy statement:
         <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement"
           target="_blank">https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement</a>
       </p>
-      <hr />
+      <hr>
       <p>3. No Cookies: This website does not use cookies or any local storage technologies.</p>
-      <hr />
+      <hr>
       <p>4. Contact via Email: If you contact me via an email link (mailto:), your message, email address, and any
         included personal data will be used solely to respond to your inquiry. This information is not shared with third
         parties.</p>
-      <hr />
+      <hr>
       <p>5. Third-Party Content and Links: This website includes content and links from third-party platforms: YouTube
         (Google LLC) – Embedded videos may collect data such as your IP address and cookies, in accordance with
         YouTube’s own policies. More info: <a href="https://policies.google.com/privacy"
